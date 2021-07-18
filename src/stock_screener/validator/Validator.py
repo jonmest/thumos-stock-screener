@@ -3,8 +3,8 @@ from abc import ABC, abstractmethod
 
 # Misc. for type hints
 from typing import List
-from Stock import Stock
-from condition.Condition import Condition
+from ..Stock import Stock
+from ..condition.Condition import Condition
 
 
 """

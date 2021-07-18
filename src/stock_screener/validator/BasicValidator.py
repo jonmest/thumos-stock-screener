@@ -1,10 +1,10 @@
 # Parent class
-from validator.Validator import Validator
+from ..validator.Validator import Validator
 
 # Misc. for type hints
 from typing import List
-from Stock import Stock
-from condition.Condition import Condition
+from ..Stock import Stock
+from ..condition.Condition import Condition
 
 
 class BasicValidator(Validator):

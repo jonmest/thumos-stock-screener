@@ -1,10 +1,6 @@
-from data_fetcher.YahooDataFetcher import YahooDataFetcher
-from condition.Above150And200SMA import Above150And200SMA
-from condition.Consolidating import Consolidating
-from data_reader.CSVReader import CSVReader
-from scanner.BasicScanner import BasicScanner
-from validator.BasicValidator import BasicValidator
-
+from stock_screener.condition.Above150And200SMA import Above150And200SMA
+from stock_screener.condition.Consolidating import Consolidating
+from stock_screener.scanner import BasicScanner
 index = 'nasdaq'
 path = f'./{index}'
 

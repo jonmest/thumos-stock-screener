@@ -2,3 +2,4 @@ setup.cfg
 dist
 .vscode
 **/__pycache__/
+nasdaq
