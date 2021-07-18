@@ -1,7 +1,0 @@
-{
-    "python.analysis.extraPaths": [
-        "./src",
-        "./src/data_fetcher",
-        "./src/stock_screener"
-    ]
-}
