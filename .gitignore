@@ -1,3 +1,4 @@
 setup.cfg
 dist
 .vscode
+!**/__pycache__/
