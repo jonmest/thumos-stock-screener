@@ -48,6 +48,7 @@ class Consolidating(Condition):
 
 print("Looking for consolidated stocks.")
 
+conditions = [ Above150And200SMA, Consolidating ]
 candidates = (
             BasicScanner(conditions, data_fetcher)
                 .loadData()
