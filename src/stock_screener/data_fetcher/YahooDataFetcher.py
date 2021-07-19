@@ -5,7 +5,7 @@ from ..data_fetcher.DataFetcher import DataFetcher
 # Misc.
 import os
 import pandas as pd
-
+import os
 # We use yahooquery instead of the more popular Yfinance, and highly recommed you do too
 from yahooquery import Ticker
 from typing import List
@@ -69,14 +69,22 @@ class YahooDataFetcher(DataFetcher):
         """
         Return a list of tickers from the universe.
         """
-        return self.tickers[:100]
+        if os.environ.get('MODE') == 'dev':
+            return self.tickers[:100]
+        else:
+            return self.tickers
 
 
     def downloadStockData(self, start_date: datetime, end_date: datetime, verbose: bool = False) -> None:
         """
         Downloading the data for the given universe.
         """
-        for ticker in self.tickers[:100]:
+        if os.environ.get('MODE') == 'dev':
+            tickers = self.tickers[:100]
+        else:
+            tickers = self.tickers
+
+        for ticker in tickers:
             if verbose:
                 print("Downloading data for ticker", ticker)
             df: pd.DataFrame = Ticker(ticker).history(start=start_date, end=end_date)

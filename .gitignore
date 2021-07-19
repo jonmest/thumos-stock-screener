@@ -1,3 +1,4 @@
+.env
 setup.cfg
 dist
 .vscode
