@@ -20,22 +20,58 @@ from ..condition.Condition import Condition
 
 
 class BasicScanner(Scanner):
-    def __init__(self, universe: str, conditions: List[Condition], 
+    """
+    Basic scanner class which should be sufficient for many use cases. You make
+    want to write your own version for more advanced scans.
+    """
+    def __init__(self, conditions: List[Condition], 
                 data_fetcher: DataFetcher = YahooDataFetcher, data_reader: DataReader = CSVReader,
                 validator: Validator = BasicValidator
                 ) -> None:
-        super().__init__(universe, conditions, data_fetcher, data_reader, validator)
+        """
+        Parameters
+        ----------
+        conditions: List[Condition]
+            List of conditions stocks returned from scan should fulfill.
+            An instance of DataFetcher, default is YahooDataFetcher.
+        data_reader: DataReader, optional
+            An instance of DataReader, the default is CSVReader and is compatible with
+            files saved by YahooDataFetcher.
+        validator: Validator, optional
+            An instance of Validator, the default is BasicValidator.
+        """
+        super().__init__(conditions, data_fetcher, data_reader, validator)
 
-    def loadData(self, path: str, verbose: bool = False) -> None:
-        start_date: datetime = datetime.datetime.now() - datetime.timedelta(days=365)
+    def loadData(self, verbose: bool = False) -> None:
+        """
+        Loads all stock data required for the scan.
+
+        Parameters
+        ----------
+        path: str
+            Path to where the data should be saved.
+        verbose: bool, optional
+            Whether the download should be verbose, IE show progress or what
+            stock is currently being downloaded.
+        """
+        # Download two years of data for each stock
+        start_date: datetime = datetime.datetime.now() - datetime.timedelta(days=730)
         end_date: datetime = datetime.date.today()
 
-        self.data_fetcher = self.data_fetcher(self.universe, path, verbose)
         self.data_fetcher.downloadTickers()
-        self.data_fetcher.downloadStockData(start_date, end_date)
+        self.data_fetcher.downloadStockData(start_date, end_date, verbose)
         return self
 
     def getCandidates(self, verbose: bool = False) -> List[Stock]:
+        """
+        Return candidate stocks from the scan.
+
+        Parameters
+        ----------
+        verbose: bool, optional
+            Whether the process should be verbose, IE show progress or what
+            stock is currently being analyzed.
+        """
         condition_validator: Validator = self.validator(self.conditions)
         self.data_reader = self.data_reader()
         candidates: List[Stock] = []
@@ -49,7 +85,7 @@ class BasicScanner(Scanner):
 
             except Exception as e:
                 if verbose:
-                    print("Failed to analyze stock {ticker}: {e}")
+                    print(f"Failed to analyze stock {ticker}: {e}")
                     traceback.print_exc()
         
         return candidates

@@ -1,33 +1,27 @@
 from stock_screener import Stock
-from stock_screener.scanner import BasicScanner
 from stock_screener.condition import Condition
+from stock_screener.scanner.BasicScanner import BasicScanner
 from stock_screener.condition.Above150And200SMA import Above150And200SMA
+from stock_screener.data_fetcher.YahooDataFetcher import YahooDataFetcher
 
-index = 'nasdaq'
-path = f'./{index}'
+universe = 'nasdaq'
+path = f'./{universe}'
 
 print("Looking for stocks above the 150 and 200 day SMA")
+
+data_fetcher = YahooDataFetcher(universe, path)
+conditions = [ Above150And200SMA ]
+
 candidates = (
-    BasicScanner(index, [Above150And200SMA])
-    .loadData(path)
-    .getCandidates()
+            BasicScanner(conditions, data_fetcher)
+                .loadData()
+                .getCandidates()
 )
 
 print(list(map(lambda x: x.getTicker(), candidates)))
 
-""""
-The same could be achieved with:
 
-scanner = BasicScanner(index, [Above150And200SMA, Consolidating])
-scanner.loadData(path)
-candidates = scanner.getCandidates()
-
-I just happen the prefer the chained method calls.
-"""
-
-"""
-You can simply create your own conditions like this:
-"""
+# You can simply create your own conditions like this:
 
 class Consolidating(Condition):
     def __init__(self, stock: Stock) -> None:
@@ -53,10 +47,11 @@ class Consolidating(Condition):
         return self.min_close > (self.max_close * 0.97)
 
 print("Looking for consolidated stocks.")
+
 candidates = (
-    BasicScanner(index, [Consolidating])
-    .loadData(path)
-    .getCandidates()
+            BasicScanner(conditions, data_fetcher)
+                .loadData()
+                .getCandidates()
 )
 
 print(list(map(lambda x: x.getTicker(), candidates)))

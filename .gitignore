@@ -3,7 +3,7 @@ dist
 .vscode
 **/__pycache__/
 nasdaq
-
+*.test.py
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

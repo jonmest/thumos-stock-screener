@@ -15,28 +15,55 @@ from ..validator.BasicValidator import BasicValidator
 from ..Stock import Stock
 from typing import List
 from ..condition.Condition import Condition
-import warnings
 
 
 class Scanner(ABC):
-    def __init__(self, universe: str, conditions: List[Condition],
+    """
+    Abstract scanner class all scanners should inherit from. The abstract methods need to be implemented.
+    """
+    def __init__(self, conditions: List[Condition],
                 data_fetcher: DataFetcher = YahooDataFetcher, data_reader: DataReader = CSVReader,
                 validator: Validator = BasicValidator) -> None:
-        if universe is None:
-            raise ValueError("No universe was provided.")
-        if conditions is None or len(conditions) < 1:
-            warnings.warn("No conditions were given. This means all stocks in the given universe will be returned.")
-
-        self.universe: str = universe
+        """
+        Parameters
+        ----------
+        conditions: List[Condition]
+            List of conditions stocks returned from scan should fulfill.
+        data_fetcher: DataFetcher, optional
+            An instance of DataFetcher, default is YahooDataFetcher.
+        data_reader: DataReader, optional
+            An instance of DataReader, the default is CSVReader and is compatible with
+            files saved by YahooDataFetcher.
+        validator: Validator, optional
+            An instance of Validator, the default is BasicValidator.
+        """
         self.conditions: List[Condition] = conditions
-        self.data_fetcher = data_fetcher
-        self.data_reader = data_reader
-        self.validator = validator
+        self.data_fetcher: DataFetcher = data_fetcher
+        self.data_reader: DataReader = data_reader
+        self.validator: Validator = validator
 
     @abstractmethod
-    def loadData(self, path: str, verbose: bool = False) -> None:
+    def loadData(self, verbose: bool = False) -> None:
+        """
+        Loads all stock data required for the scan.
+
+        Parameters
+        ----------
+        verbose: bool, optional
+            Whether the download should be verbose, IE show progress or what
+            stock is currently being downloaded.
+        """
         return self
 
     @abstractmethod
     def getCandidates(self, verbose: bool = False) -> List[Stock]:
+        """
+        Return candidate stocks from the scan.
+
+        Parameters
+        ----------
+        verbose: bool, optional
+            Whether the process should be verbose, IE show progress or what
+            stock is currently being analyzed.
+        """
         pass

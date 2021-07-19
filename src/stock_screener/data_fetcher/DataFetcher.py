@@ -1,8 +1,10 @@
 # Parent class
 from abc import ABC, abstractmethod
+from datetime import datetime
 
 # Misc.
 import os
+from typing import List
 
 
 class DataFetcher(ABC):
@@ -12,7 +14,7 @@ class DataFetcher(ABC):
     and (2) download stock data to a given directory.
     """
 
-    def __init__(self, universe: str, path: str, verbose: bool = False) -> None:
+    def __init__(self, universe: str, path: str) -> None:
         """
         Parameters
         ----------
@@ -27,7 +29,6 @@ class DataFetcher(ABC):
         ----------
         universe: str
         path: str
-        verbose: bool
         tickers: List[str]
         """
         if universe is None:
@@ -39,7 +40,6 @@ class DataFetcher(ABC):
         if not os.path.exists(path):
             os.makedirs(path)
         self.path = path
-        self.verbose = verbose
         self.tickers = None
     
     @abstractmethod
@@ -49,9 +49,24 @@ class DataFetcher(ABC):
         """
         return self
 
+    
     @abstractmethod
-    def downloadStockData(self) -> None:
+    def getTickers(self) -> List[str]:
         """
-        Downloading the data for the 
+        Return a list of tickers from the universe.
+        """
+        pass
+
+    @abstractmethod
+    def downloadStockData(self, start_date: datetime, end_date: datetime, verbose: bool = False) -> None:
+        """
+        Downloading the data for the given universe.
         """
         return self
+
+    @abstractmethod
+    def getTickerPath(self, ticker: str) -> str:
+        """
+        Return the path to the file for a stock
+        """
+        pass

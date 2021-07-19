@@ -1,10 +1,11 @@
+from typing import List
 import pandas as pd
 
 
 class Stock:
-    def __init__(self, ticker: str, df: pd.DataFrame, close_key: str = "Adj Close",
-                volume_key: str = "Volume", open_key: str = "Open", 
-                high_key: str = "High", low_key: str = "Low", date_key: str = "Date") -> None:
+    def __init__(self, ticker: str, df: pd.DataFrame, close_key: str = "adjclose",
+                volume_key: str = "volume", open_key: str = "open", 
+                high_key: str = "high", low_key: str = "low", date_key: str = "date") -> None:
         self.ticker = ticker
         self.df = df
         self.close_key = close_key
@@ -47,15 +48,5 @@ class Stock:
     def getColumn(self, name: str) -> pd.Series:
         return self.df[name]
 
-    def createSMA(self, window: int = 10) -> None:
-        if not self.hasSMA(window):
-            self._setSMA(window=window, sma=self.getSMA(window=window))
-
-    def getSMA(self, window: int = 10) -> pd.Series:
-        return round(self.df["Adj Close"].rolling(window=window).mean(), 2)
-
-    def _setSMA(self, window: int, sma: pd.Series) -> None:
-        self.df["SMA_"+str(window)] = sma
-
-    def hasSMA(self, window: int) -> bool:
-        return "SMA_"+str(window) in self.df
+    def getColumns(self) -> List[str]:
+        return self.df.columns

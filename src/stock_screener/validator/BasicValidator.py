@@ -9,16 +9,23 @@ from ..condition.Condition import Condition
 
 class BasicValidator(Validator):
     """
-    Constructor, always call super.
+    Basic validator class that only returns a stock
+    as a candidate if ALL conditions are fulfilled.
     """
     def __init__(self, conditions: List[Condition]) -> None:
+        """
+        Parameters
+        ----------
+        conditions: List[Condition]
+        """
         super().__init__(conditions)
 
-    """
-    An example validation implementation. For this method to return True,
-    all conditions need to be True.
-    """
     def validation(self, stock: Stock) -> bool:
+        """
+        Parameters
+        ----------
+        stock: Stock
+        """
         for condition in self.conditions:
             if not condition(stock).fulfilled():
                 return False
