@@ -42,20 +42,20 @@ class BasicScanner(Scanner):
         """
         super().__init__(conditions, data_fetcher, data_reader, validator)
 
-    def loadData(self, verbose: bool = False) -> None:
+    def loadData(self, period: int = 365, verbose: bool = False) -> None:
         """
         Loads all stock data required for the scan.
 
         Parameters
         ----------
-        path: str
-            Path to where the data should be saved.
+        period: int
+            How many days back you want data for each stock
         verbose: bool, optional
             Whether the download should be verbose, IE show progress or what
             stock is currently being downloaded.
         """
         # Download two years of data for each stock
-        start_date: datetime = datetime.datetime.now() - datetime.timedelta(days=730)
+        start_date: datetime = datetime.datetime.now() - datetime.timedelta(days=period)
         end_date: datetime = datetime.date.today()
 
         self.data_fetcher.downloadTickers()

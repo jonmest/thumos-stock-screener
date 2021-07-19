@@ -43,12 +43,14 @@ class Scanner(ABC):
         self.validator: Validator = validator
 
     @abstractmethod
-    def loadData(self, verbose: bool = False) -> None:
+    def loadData(self, period: int = 365, verbose: bool = False) -> None:
         """
         Loads all stock data required for the scan.
 
         Parameters
         ----------
+        period: int
+            How many days back you want data for each stock
         verbose: bool, optional
             Whether the download should be verbose, IE show progress or what
             stock is currently being downloaded.

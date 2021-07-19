@@ -6,6 +6,7 @@ from ..data_fetcher.DataFetcher import DataFetcher
 import os
 import pandas as pd
 import os
+
 # We use yahooquery instead of the more popular Yfinance, and highly recommed you do too
 from yahooquery import Ticker
 from typing import List
@@ -69,8 +70,8 @@ class YahooDataFetcher(DataFetcher):
         """
         Return a list of tickers from the universe.
         """
-        if os.environ.get('MODE') == 'dev':
-            return self.tickers[:100]
+        if os.environ.get('MAX_TICKERS'):
+            return self.tickers[:int(os.environ.get('MAX_TICKERS'))]
         else:
             return self.tickers
 
@@ -79,8 +80,8 @@ class YahooDataFetcher(DataFetcher):
         """
         Downloading the data for the given universe.
         """
-        if os.environ.get('MODE') == 'dev':
-            tickers = self.tickers[:100]
+        if os.environ.get('MAX_TICKERS'):
+            tickers = self.tickers[:int(os.environ.get('MAX_TICKERS'))]
         else:
             tickers = self.tickers
 
