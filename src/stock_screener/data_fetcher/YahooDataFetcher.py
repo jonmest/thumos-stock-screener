@@ -34,7 +34,8 @@ class YahooDataFetcher(DataFetcher):
 
         # Yahoo Finance uses dashes instead of dots
         self.tickers: List[str] = [item.replace(".", "-") for item in self.tickers]
-
+        return self
+    
     def getTickers(self) -> List[str]:
         return self.tickers[:100]
 
@@ -49,3 +50,4 @@ class YahooDataFetcher(DataFetcher):
             df.to_csv(
                 os.path.join(self.path, f"{ticker}.csv")
             )
+        return self

@@ -35,7 +35,7 @@ class Scanner(ABC):
 
     @abstractmethod
     def loadData(self, path: str, verbose: bool = False) -> None:
-        pass
+        return self
 
     @abstractmethod
     def getCandidates(self, verbose: bool = False) -> List[Stock]:

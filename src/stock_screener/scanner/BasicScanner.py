@@ -33,6 +33,7 @@ class BasicScanner(Scanner):
         self.data_fetcher = self.data_fetcher(self.universe, path, verbose)
         self.data_fetcher.downloadTickers()
         self.data_fetcher.downloadStockData(start_date, end_date)
+        return self
 
     def getCandidates(self, verbose: bool = False) -> List[Stock]:
         condition_validator: Validator = self.validator(self.conditions)

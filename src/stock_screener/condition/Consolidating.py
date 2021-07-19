@@ -3,10 +3,10 @@ from ..Stock import Stock
 
 
 class Consolidating(Condition):
-    """
-    Always call super in the constructor.
-    """
     def __init__(self, stock: Stock) -> None:
+        """
+        Always call super in the constructor.
+        """
         super().__init__(stock)
         window = 10
         try:
