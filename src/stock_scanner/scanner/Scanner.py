@@ -27,7 +27,7 @@ class Scanner(ABC):
         - getCandidates
     """
     def __init__(self, conditions: List[Condition],
-                data_fetcher: DataFetcher = YahooDataFetcher, data_reader: DataReader = CSVReader,
+                data_fetcher: DataFetcher, data_reader: DataReader = CSVReader,
                 validator: Validator = BasicValidator) -> None:
         """
         Args:
@@ -36,10 +36,10 @@ class Scanner(ABC):
             data_fetcher (DataFetcher, optional):
                 An instance of DataFetcher, default is YahooDataFetcher.
             data_reader (DataReader, optional):
-                An instance of DataReader, the default is CSVReader and is compatible with
+                A reference to a DataReader, the default is CSVReader and is compatible with
                 files saved by YahooDataFetcher.
             validator (Validator, optional):
-                An instance of Validator, the default is BasicValidator.
+                A reference to a Validator, the default is BasicValidator.
         """
         self.conditions: List[Condition] = conditions
         self.data_fetcher: DataFetcher = data_fetcher

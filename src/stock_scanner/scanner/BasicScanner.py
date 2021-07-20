@@ -25,7 +25,7 @@ class BasicScanner(Scanner):
     You may want to write your own version for more advanced scans.
     """
     def __init__(self, conditions: List[Condition], 
-                data_fetcher: DataFetcher = YahooDataFetcher, data_reader: DataReader = CSVReader,
+                data_fetcher: DataFetcher, data_reader: DataReader = CSVReader,
                 validator: Validator = BasicValidator
                 ) -> None:
         """
@@ -35,10 +35,10 @@ class BasicScanner(Scanner):
             data_fetcher (DataFetcher, optional):
                 An instance of DataFetcher, default is YahooDataFetcher.
             data_reader (DataReader, optional):
-                An instance of DataReader, the default is CSVReader and is compatible with
+                A reference to a DataReader, the default is CSVReader and is compatible with
                 files saved by YahooDataFetcher.
             validator (Validator, optional):
-                An instance of Validator, the default is BasicValidator.
+                A reference to a Validator, the default is BasicValidator.
         """
         super().__init__(conditions, data_fetcher, data_reader, validator)
 
