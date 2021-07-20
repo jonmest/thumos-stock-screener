@@ -20,22 +20,26 @@ from ..condition.Condition import Condition
 class Scanner(ABC):
     """
     Abstract scanner class all scanners should inherit from. The abstract methods need to be implemented.
+
+    Methods:
+        - __init__
+        - loadData
+        - getCandidates
     """
     def __init__(self, conditions: List[Condition],
                 data_fetcher: DataFetcher = YahooDataFetcher, data_reader: DataReader = CSVReader,
                 validator: Validator = BasicValidator) -> None:
         """
-        Parameters
-        ----------
-        conditions: List[Condition]
-            List of conditions stocks returned from scan should fulfill.
-        data_fetcher: DataFetcher, optional
-            An instance of DataFetcher, default is YahooDataFetcher.
-        data_reader: DataReader, optional
-            An instance of DataReader, the default is CSVReader and is compatible with
-            files saved by YahooDataFetcher.
-        validator: Validator, optional
-            An instance of Validator, the default is BasicValidator.
+        Args:
+            conditions (List[Condition]):
+                List of conditions stocks returned from scan should fulfill.
+            data_fetcher (DataFetcher, optional):
+                An instance of DataFetcher, default is YahooDataFetcher.
+            data_reader (DataReader, optional):
+                An instance of DataReader, the default is CSVReader and is compatible with
+                files saved by YahooDataFetcher.
+            validator (Validator, optional):
+                An instance of Validator, the default is BasicValidator.
         """
         self.conditions: List[Condition] = conditions
         self.data_fetcher: DataFetcher = data_fetcher
@@ -47,13 +51,12 @@ class Scanner(ABC):
         """
         Loads all stock data required for the scan.
 
-        Parameters
-        ----------
-        period: int
-            How many days back you want data for each stock
-        verbose: bool, optional
-            Whether the download should be verbose, IE show progress or what
-            stock is currently being downloaded.
+        Args:
+            period (int):
+                How many days back you want data for each stock
+            verbose (bool, optional):
+                Whether the download should be verbose, i.e. show progress or what
+                stock is currently being downloaded.
         """
         return self
 
@@ -62,10 +65,9 @@ class Scanner(ABC):
         """
         Return candidate stocks from the scan.
 
-        Parameters
-        ----------
-        verbose: bool, optional
-            Whether the process should be verbose, IE show progress or what
-            stock is currently being analyzed.
+        Args:
+            verbose (bool, optional):
+                Whether the process should be verbose, i.e. show progress or what
+                stock is currently being analyzed.
         """
         pass

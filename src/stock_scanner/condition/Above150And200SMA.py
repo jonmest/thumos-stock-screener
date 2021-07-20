@@ -13,12 +13,11 @@ class Above150And200SMA(Condition):
         later used when assessing the truthhfulness of this condition being
         fulfilled.
 
-        Parameters
-        ----------
-        stock: Stock
+        Args:
+            stock (Stock)
         """
         super().__init__(stock) # Always call super
-        self.currentClose: float = stock.getClose()[-1]
+        self.currentClose = stock.getClose()[-1]
         self.SMA150 = round(stock.getClose().rolling(window=150).mean(), 2)
         self.SMA200 = self.SMA150 = round(stock.getClose().rolling(window=200).mean(), 2)
 

@@ -21,24 +21,24 @@ from ..condition.Condition import Condition
 
 class BasicScanner(Scanner):
     """
-    Basic scanner class which should be sufficient for many use cases. You make
-    want to write your own version for more advanced scans.
+    Basic scanner class which should be sufficient for many use cases. 
+    You may want to write your own version for more advanced scans.
     """
     def __init__(self, conditions: List[Condition], 
                 data_fetcher: DataFetcher = YahooDataFetcher, data_reader: DataReader = CSVReader,
                 validator: Validator = BasicValidator
                 ) -> None:
         """
-        Parameters
-        ----------
-        conditions: List[Condition]
-            List of conditions stocks returned from scan should fulfill.
-            An instance of DataFetcher, default is YahooDataFetcher.
-        data_reader: DataReader, optional
-            An instance of DataReader, the default is CSVReader and is compatible with
-            files saved by YahooDataFetcher.
-        validator: Validator, optional
-            An instance of Validator, the default is BasicValidator.
+        Args:
+            conditions (List[Condition]):
+                List of conditions stocks returned from scan should fulfill.
+            data_fetcher (DataFetcher, optional):
+                An instance of DataFetcher, default is YahooDataFetcher.
+            data_reader (DataReader, optional):
+                An instance of DataReader, the default is CSVReader and is compatible with
+                files saved by YahooDataFetcher.
+            validator (Validator, optional):
+                An instance of Validator, the default is BasicValidator.
         """
         super().__init__(conditions, data_fetcher, data_reader, validator)
 
@@ -46,15 +46,15 @@ class BasicScanner(Scanner):
         """
         Loads all stock data required for the scan.
 
-        Parameters
-        ----------
-        period: int
-            How many days back you want data for each stock
-        verbose: bool, optional
-            Whether the download should be verbose, IE show progress or what
-            stock is currently being downloaded.
+        Args:
+            period (int, optional):
+                How many days back you want data for each stock. The default
+                is 365, so in that case you fetch daily data from today to a year
+                back.
+            verbose (bool, optional):
+                Whether the download should be verbose, i.e. show progress or what
+                stock is currently being downloaded.
         """
-        # Download two years of data for each stock
         start_date: datetime = datetime.datetime.now() - datetime.timedelta(days=period)
         end_date: datetime = datetime.date.today()
 
@@ -66,11 +66,10 @@ class BasicScanner(Scanner):
         """
         Return candidate stocks from the scan.
 
-        Parameters
-        ----------
-        verbose: bool, optional
-            Whether the process should be verbose, IE show progress or what
-            stock is currently being analyzed.
+        Args:
+            verbose (bool, optional):
+                Whether the process should be verbose, IE show progress or what
+                stock is currently being analyzed.
         """
         condition_validator: Validator = self.validator(self.conditions)
         self.data_reader = self.data_reader()
