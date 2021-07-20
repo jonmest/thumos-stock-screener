@@ -3,17 +3,24 @@ from ..Stock import Stock
 
 
 class Consolidating(Condition):
-    def __init__(self, stock: Stock) -> None:
+    def __init__(self, window: int = 10, max_difference_percentage: int = 10) -> None:
         """
-        Always call super in the constructor.
+        In the constructor, implementations of this interface should be concerned with
+        taking arguments defining the "rules" of the condition. In this instance, get values
+        defining the rule "the stock's highest and lowest price during the last window days
+        shall not be higher than max_difference_percentage".
+        Args:
+            stock (Stock)
         """
-        super().__init__(stock)
-        window = 10
+        super().__init__()
+        self.window = window
+        self.max_difference_percentage = max_difference_percentage
+
+
+    def fulfilled(self, stock: Stock) -> bool:
         try:
-            self.max_close = stock.getClose()[-window:].max()
-            self.min_close = stock.getClose()[-window:].min()
+            self.max_close = stock.getClose()[-self.window:].max()
+            self.min_close = stock.getClose()[-self.window:].min()
         except IndexError:
             return False
-
-    def fulfilled(self) -> bool:
-        return self.min_close > (self.max_close * 0.9)
+        return self.min_close > self.max_close * (1 - (self.max_difference_percentage / 100))

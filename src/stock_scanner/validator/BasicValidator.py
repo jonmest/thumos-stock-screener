@@ -27,7 +27,7 @@ class BasicValidator(Validator):
         stock: Stock
         """
         for condition in self.conditions:
-            if not condition(stock).fulfilled():
+            if not condition.fulfilled(stock):
                 return False
         return True
     

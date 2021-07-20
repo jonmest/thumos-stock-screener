@@ -6,22 +6,20 @@ from ..Stock import Stock
 
 class Condition(ABC):
     """ Base class all other conditions must inherit from and implement methods for. """
-    def __init__(self, stock: Stock) -> None:
+    def __init__(self) -> None:
         """
-        Args:
-            stock (Stock):
-                An instance of a Stock to check condition for.
-        
+        In the constructor, implementations of this interface should be concerned with
+        taking arguments defining the "rules" of the condition. For example, the percentage
+        a stock must have gone up in a given time frame to be considered fulfilling of the
+        condition.
         """
-        if stock is None or not isinstance(stock, Stock):
-            raise ValueError('A Stock instance needs to be supplied.')
-        self.stock = stock
+        pass
         
 
     @abstractmethod
-    def fulfilled(self) -> bool:
+    def fulfilled(self, stock: Stock) -> bool:
         """
         The method checks if the condition is met for the
-        supplied stock.
+        given stock. Always take stock as an argument.
         """
         return False
