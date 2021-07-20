@@ -3,9 +3,11 @@ from stock_screener.condition import Condition
 from stock_screener.scanner.BasicScanner import BasicScanner
 from stock_screener.condition.Above150And200SMA import Above150And200SMA
 from stock_screener.data_fetcher.YahooDataFetcher import YahooDataFetcher
+import os
 
 universe = 'nasdaq'
 path = f'./{universe}'
+os.environ['MAX_TICKERS'] = '50'
 
 print("Looking for stocks above the 150 and 200 day SMA")
 
