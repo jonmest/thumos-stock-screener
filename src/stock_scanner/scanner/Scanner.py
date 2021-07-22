@@ -53,7 +53,7 @@ class Scanner(ABC):
 
         Args:
             period (int):
-                How many days back you want data for each stock
+                How many bars back you want data for each stock
             verbose (bool, optional):
                 Whether the download should be verbose, i.e. show progress or what
                 stock is currently being downloaded.

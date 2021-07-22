@@ -36,7 +36,7 @@ class Validator(ABC):
         """
         return False
 
-    def allFulfilled(self, stock: Stock) -> bool:
+    def isCandidate(self, stock: Stock) -> bool:
         """
         Parameters
         ----------

@@ -3,20 +3,26 @@ from stock_scanner.condition import Condition
 from stock_scanner.condition.Consolidating import Consolidating
 from stock_scanner.scanner.BasicScanner import BasicScanner
 from stock_scanner.condition.AboveTwoSMAs import AboveTwoSMAs
-from stock_scanner.data_fetcher.YahooDataFetcher import YahooDataFetcher
+from stock_scanner.io import YahooIO
 import os
 
 universe = 'nasdaq'
 path = f'./{universe}'
+
+"""
+Setting environment variable dictating the maximum
+number of stocks to fetch data for. Useful during
+development and testing. Specific to YahooIO.
+"""
 os.environ['MAX_TICKERS'] = '50'
 
-print("Looking for stocks above the 150 and 200 day SMA")
+print("Looking for consolidated stocks.")
 
-data_fetcher = YahooDataFetcher(universe, path)
-conditions = [ Consolidating(window=10) ]
+stock_io = YahooIO(universe, path)
+conditions = [ Consolidating(window=10, max_difference_percentage=5) ]
 
 candidates = (
-            BasicScanner(conditions, data_fetcher)
+            BasicScanner(conditions, stock_io)
                 .loadData()
                 .getCandidates()
 )
@@ -24,38 +30,48 @@ candidates = (
 print(list(map(lambda x: x.getTicker(), candidates)))
 
 
-# # You can simply create your own conditions like this:
+# You can simply create your own conditions like this:
+class AboveTwoSMAs(Condition):
+    """
+    Example condition. Checks if a stock's current price
+    is above two simple moving averages (SMAs).
+    """
+    def __init__(self, sma1_period: int = 150, sma2_period: int = 200) -> None:
+        """
+        In the constructor, implementations of this interface should be concerned with
+        taking arguments defining the "rules" of the condition. In this instance, the 
+        windows for computing two SMAs of the stock's close price.
+        Args:
+            sma1_period (int)
+            sma2_period (int)
+        """
+        super().__init__() # Always call super
+        self.sma1_period = sma1_period
+        self.sma2_period = sma2_period
 
-# class Consolidating(Condition):
-#     def __init__(self, stock: Stock) -> None:
-#         """
-#         Always call super in the constructor.
-#         """
-#         super().__init__(stock)
 
-#         # We will look from the last close to 10 days back
-#         window = 10
-#         try:
-#             # Find the max and min closes in this window
-#             self.max_close = stock.getClose()[-window:].max()
-#             self.min_close = stock.getClose()[-window:].min()
-#         except IndexError:
-#             return False
+    def fulfilled(self, stock: Stock) -> bool:
+        """
+        The method that determines whether the condition is fulfilled or not.
+        
+        Args:
+            stock (Stock)
+        """
+        currentClose = stock.getClose()[-1]
+        SMA1 = round(stock.getClose().rolling(window=self.sma1_period).mean(), 2)
+        SMA2 = self.SMA150 = round(stock.getClose().rolling(window=self.sma2_period).mean(), 2)
+        try:
+            return currentClose > SMA1[-1] and currentClose > SMA2[-1]
+        except IndexError:
+            return False
 
-#     def fulfilled(self) -> bool:
-#         """
-#         If the difference between them is less than 3%
-#         we consider the stock consolidated
-#         """
-#         return self.min_close > (self.max_close * 0.97)
+print("Looking for consolidated stocks above the 150 and 200 SMA.")
 
-# print("Looking for consolidated stocks.")
+conditions = [ AboveTwoSMAs(), Consolidating(window=10, max_difference_percentage=5) ]
+candidates = (
+            BasicScanner(conditions, stock_io)
+                .loadData()
+                .getCandidates()
+)
 
-# conditions = [ Above150And200SMA, Consolidating ]
-# candidates = (
-#             BasicScanner(conditions, data_fetcher)
-#                 .loadData()
-#                 .getCandidates()
-# )
-
-# print(list(map(lambda x: x.getTicker(), candidates)))
+print(list(map(lambda x: x.getTicker(), candidates)))
