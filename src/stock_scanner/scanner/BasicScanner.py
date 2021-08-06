@@ -19,7 +19,9 @@ from ..condition.Condition import Condition
 
 class BasicScanner(Scanner):
     """
-    Basic scanner class which should be sufficient for many use cases. 
+    Basic scanner class which should be sufficient for many use cases.
+    Supply a list of conditions and it spits out the stocks conforming
+    to them.
     You may want to write your own version for more advanced scans.
     """
     def __init__(self, conditions: List[Condition], stock_io: StockIO,
