@@ -44,7 +44,7 @@ class YahooIO(StockIO):
         """
         super().__init__(universe, path)
 
-        valid_universes: List[str] = ["nasdaq", "dow", "ftse100", "ftse250", "nifty50", "niftybank", "sp500"]
+        valid_universes: List[str] = ["nasdaq", "nyse", "dow", "ftse100", "ftse250", "nifty50", "niftybank", "sp500"]
         if universe not in valid_universes:
             raise ValueError("Invalid universe given.")
 
@@ -136,6 +136,8 @@ class YahooIO(StockIO):
                 self.tickers = si.tickers_nifty50()
             elif self.universe == "niftybank":
                 self.tickers = si.tickers_niftybank()
+            elif self.universe == "nyse":
+                self.tickers = pd.read_csv("ftp://ftp.nasdaqtrader.com/symboldirectory/otherlisted.txt", sep="|").iloc[:-1 , :]["ACT Symbol"].tolist()
 
             # Yahoo Finance uses dashes instead of dots
             self.tickers: List[str] = [item.replace(".", "-") for item in self.tickers]

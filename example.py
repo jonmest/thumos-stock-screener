@@ -2,23 +2,15 @@ from stock_scanner import Stock
 from stock_scanner.condition import Condition
 from stock_scanner.condition.Consolidating import Consolidating
 from stock_scanner.scanner.BasicScanner import BasicScanner
-from stock_scanner.condition.AboveTwoSMAs import AboveTwoSMAs
 from stock_scanner.io import YahooIO
 import os
 
 universe = 'nasdaq'
 path = f'./{universe}'
 
-"""
-Setting environment variable dictating the maximum
-number of stocks to fetch data for. Useful during
-development and testing. Specific to YahooIO.
-"""
-os.environ['MAX_TICKERS'] = '50'
-
 print("Looking for consolidated stocks.")
 
-stock_io = YahooIO(universe, path)
+stock_io = YahooIO(universe, path, max_tickers=50)
 conditions = [ Consolidating(window=10, max_difference_percentage=5) ]
 
 candidates = (
