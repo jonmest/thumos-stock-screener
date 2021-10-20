@@ -1,4 +1,6 @@
 # Stock-scanner
+[![DeepSource](https://deepsource.io/gh/jonmest/stock-scanner.svg/?label=active+issues&show_trend=true&token=BzPLQmQm-bonBbfeokcEkFu3)](https://deepsource.io/gh/jonmest/stock-scanner/?ref=repository-badge)
+
 Stock-scanner is a Python3 package aimed at facilitating the rapid development of custom stock scanners/screeners. The goal is for it to be a sort of framework which easily lets users swap different modules at their own discretion.
 
 ## Example code
