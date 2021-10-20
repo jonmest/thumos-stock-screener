@@ -74,5 +74,6 @@ class StockTest(unittest.TestCase):
         self.assertTrue(self.__stock.hasColumn("close"))
         self.assertFalse(self.__stock.hasColumn("Mark Minervini"))
 
+
 if __name__ == '__main__':
     unittest.main()

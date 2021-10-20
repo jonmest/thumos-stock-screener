@@ -1,5 +1,5 @@
-from ..condition.Condition import Condition
 from src.stock_scanner.stock.Stock import Stock
+from ..condition.Condition import Condition
 
 
 class AboveTwoSMAs(Condition):

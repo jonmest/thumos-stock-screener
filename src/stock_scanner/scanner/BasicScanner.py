@@ -1,19 +1,17 @@
 # Parent class
-from ..scanner.Scanner import Scanner
-
-# Data IO
-from ..io.StockIO import StockIO
-
-# Condition validation
-from ..validator.Validator import Validator
-from ..validator.BasicValidator import BasicValidator
-
 # Misc.
 import datetime
 import traceback
-from src.stock_scanner.stock.Stock import Stock
 from typing import List
+
+from src.stock_scanner.stock.Stock import Stock
 from ..condition.Condition import Condition
+# Data IO
+from ..io.StockIO import StockIO
+from ..scanner.Scanner import Scanner
+from ..validator.BasicValidator import BasicValidator
+# Condition validation
+from ..validator.Validator import Validator
 
 
 class BasicScanner(Scanner):
@@ -21,8 +19,9 @@ class BasicScanner(Scanner):
     Basic scanner class which should be sufficient for many use cases. 
     You may want to write your own version for more advanced scans.
     """
+
     def __init__(self, conditions: List[Condition], stock_io: StockIO,
-                validator: Validator = None) -> None:
+                 validator: Validator = None) -> None:
         """
         Args:
             conditions (List[Condition]):
@@ -65,17 +64,17 @@ class BasicScanner(Scanner):
                 stock is currently being analyzed.
         """
         candidates: List[Stock] = []
-        
-        for ticker in self.stock_io.getTickers():    
+
+        for ticker in self.stock_io.getTickers():
             try:
                 stock: Stock = self.stock_io.read(ticker)
-                
-                if self.validator.isCandidate(stock):
+
+                if self.validator.is_candidate(stock):
                     candidates.append(stock)
 
             except Exception as e:
                 if verbose:
                     print(f"Failed to analyze stock {ticker}: {e}")
                     traceback.print_exc()
-        
+
         return candidates

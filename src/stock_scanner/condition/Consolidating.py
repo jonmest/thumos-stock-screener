@@ -1,5 +1,5 @@
-from ..condition.Condition import Condition
 from src.stock_scanner.stock.Stock import Stock
+from ..condition.Condition import Condition
 
 
 class Consolidating(Condition):
@@ -16,11 +16,10 @@ class Consolidating(Condition):
         self.window = window
         self.max_difference_percentage = max_difference_percentage
 
-
     def fulfilled(self, stock: Stock) -> bool:
         try:
-            self.max_close = stock.getClose()[-self.window:].max()
-            self.min_close = stock.getClose()[-self.window:].min()
+            max_close = stock.getClose()[-self.window:].max()
+            min_close = stock.getClose()[-self.window:].min()
         except IndexError:
             return False
-        return self.min_close > self.max_close * (1 - (self.max_difference_percentage / 100))
+        return min_close > max_close * (1 - (self.max_difference_percentage / 100))

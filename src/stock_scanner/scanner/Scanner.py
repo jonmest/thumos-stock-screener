@@ -1,17 +1,16 @@
 # Parent class
 from abc import ABC, abstractmethod
-
-from ..io.StockIO import StockIO
-
-# Data IO
-
-# Condition validation
-from ..validator.Validator import Validator
+from typing import List
 
 # Misc.
 from src.stock_scanner.stock.Stock import Stock
-from typing import List
 from ..condition.Condition import Condition
+from ..io.StockIO import StockIO
+# Condition validation
+from ..validator.Validator import Validator
+
+
+# Data IO
 
 
 class Scanner(ABC):
@@ -23,8 +22,9 @@ class Scanner(ABC):
         - loadData
         - getCandidates
     """
+
     def __init__(self, conditions: List[Condition],
-                stock_io: StockIO, validator: Validator) -> None:
+                 stock_io: StockIO, validator: Validator) -> None:
         """
         Args:
             conditions (List[Condition]):

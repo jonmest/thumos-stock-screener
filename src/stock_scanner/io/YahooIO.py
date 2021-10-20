@@ -3,28 +3,29 @@ This module contains the abstract class defining the interface ALL
 DataReaders need to implement.
 """
 
+import os
 # Parent class
 from datetime import datetime
+from typing import List
 
 import pandas as pd
-
-from .StockIO import StockIO
+from yahooquery import Ticker
 
 # Misc.
 from src.stock_scanner.stock.Stock import Stock
-import os
-from yahooquery import Ticker
-from typing import List
+from .StockIO import StockIO
 from ..tickers import TickerFetcher
+
 
 class YahooIO(StockIO):
     """
     IO for Yahoo
     """
-    def __init__(self, universe: str, path: str, delimiter: str = None, 
-                close_key: str = "adjclose", volume_key: str = "volume",
-                open_key: str = "open", high_key: str = "high", 
-                low_key: str = "low", date_key: str = "date") -> None:
+
+    def __init__(self, universe: str, path: str, delimiter: str = None,
+                 close_key: str = "adjclose", volume_key: str = "volume",
+                 open_key: str = "open", high_key: str = "high",
+                 low_key: str = "low", date_key: str = "date") -> None:
         """
         Args:
             universe (str): The name of the universe (one implementation could for example allow "nasdaq" or "sp500")
@@ -101,9 +102,9 @@ class YahooIO(StockIO):
         df: pd.DataFrame = pd.read_csv(
             path, index_col=0, delimiter=self.delimiter
         )
-        stock: Stock = Stock(ticker, df, self.close_key, 
-            self.volume_key, self.open_key, self.high_key, 
-            self.low_key, self.date_key)
+        stock: Stock = Stock(ticker, df, self.close_key,
+                             self.volume_key, self.open_key, self.high_key,
+                             self.low_key, self.date_key)
         return stock
 
     def __get_ticker_path__(self, ticker: str) -> str:
@@ -130,9 +131,8 @@ class YahooIO(StockIO):
                 self.tickers = self.ticker_fetcher.getStockholm()
 
             # Yahoo Finance uses dashes instead of dots
-            #self.tickers: List[str] = [item.replace(".", "-") for item in self.tickers]
+            # self.tickers: List[str] = [item.replace(".", "-") for item in self.tickers]
 
         if os.environ.get('MAX_TICKERS'):
             return self.tickers[:int(os.environ.get('MAX_TICKERS'))]
-        else:
-            return self.tickers
+        return self.tickers

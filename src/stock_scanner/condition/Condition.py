@@ -4,8 +4,10 @@ from abc import ABC, abstractmethod
 # Type hinting
 from src.stock_scanner.stock.Stock import Stock
 
+
 class Condition(ABC):
     """ Base class all other conditions must inherit from and implement methods for. """
+
     def __init__(self) -> None:
         """
         In the constructor, implementations of this interface should be concerned with
@@ -14,7 +16,6 @@ class Condition(ABC):
         condition.
         """
         pass
-        
 
     @abstractmethod
     def fulfilled(self, stock: Stock) -> bool:

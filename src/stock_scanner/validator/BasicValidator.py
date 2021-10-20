@@ -1,10 +1,10 @@
 # Parent class
-from ..validator.Validator import Validator
-
 # Misc. for type hints
 from typing import List
+
 from src.stock_scanner.stock.Stock import Stock
 from ..condition.Condition import Condition
+from ..validator.Validator import Validator
 
 
 class BasicValidator(Validator):
@@ -12,6 +12,7 @@ class BasicValidator(Validator):
     Basic validator class that only returns a stock
     as a candidate if ALL conditions are fulfilled.
     """
+
     def __init__(self, conditions: List[Condition]) -> None:
         """
         Parameters
@@ -20,7 +21,7 @@ class BasicValidator(Validator):
         """
         super().__init__(conditions)
 
-    def isCandidate(self, stock: Stock) -> bool:
+    def is_candidate(self, stock: Stock, **kwargs) -> bool:
         """
         Parameters
         ----------
@@ -30,4 +31,3 @@ class BasicValidator(Validator):
             if not condition.fulfilled(stock):
                 return False
         return True
-    

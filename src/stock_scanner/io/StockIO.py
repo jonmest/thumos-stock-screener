@@ -3,16 +3,17 @@ This module contains the abstract class defining the interface ALL
 DataReaders need to implement.
 """
 
+import os
 # Parent class
 from abc import ABC, abstractmethod
+from datetime import datetime
 from typing import List
 
 from stock_scanner.data_fetcher.DataFetcher import DataFetcher
 
 # Misc.
 from src.stock_scanner.stock.Stock import Stock
-import os
-from datetime import datetime
+
 
 class StockIO(ABC):
     """
@@ -29,15 +30,15 @@ class StockIO(ABC):
         if universe is None:
             raise ValueError('The name of a universe needs to be supplied. For example, \"^IXIC\" for NASDAQ stocks.')
         if universe is None:
-            raise ValueError('A path for where the stock data should be downloaded is required.')    
+            raise ValueError('A path for where the stock data should be downloaded is required.')
         self.universe = universe
 
         if not os.path.exists(path):
             os.makedirs(path)
-        
+
         self.path = path
         self.tickers = None
-    
+
     @abstractmethod
     def downloadStockData(self, start_date: datetime, end_date: datetime, verbose: bool = False) -> "DataFetcher":
         """
