@@ -7,7 +7,7 @@ DataReaders need to implement.
 from abc import ABC, abstractmethod
 
 # Misc.
-from ..Stock import Stock
+from src.stock_scanner.stock.Stock import Stock
 
 
 class DataReader(ABC):

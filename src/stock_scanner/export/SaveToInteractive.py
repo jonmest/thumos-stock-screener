@@ -2,9 +2,8 @@ from datetime import date
 import os
 from typing import List
 
-from ..Stock import Stock
+from src.stock_scanner.stock.Stock import Stock
 
-import mplfinance as mpf
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 

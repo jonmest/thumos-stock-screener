@@ -3,7 +3,7 @@ from ..validator.Validator import Validator
 
 # Misc. for type hints
 from typing import List
-from ..Stock import Stock
+from src.stock_scanner.stock.Stock import Stock
 from ..condition.Condition import Condition
 
 
@@ -20,7 +20,7 @@ class BasicValidator(Validator):
         """
         super().__init__(conditions)
 
-    def validation(self, stock: Stock) -> bool:
+    def isCandidate(self, stock: Stock) -> bool:
         """
         Parameters
         ----------

@@ -2,7 +2,7 @@
 from abc import ABC, abstractmethod
 
 # Type hinting
-from ..Stock import Stock
+from src.stock_scanner.stock.Stock import Stock
 
 class Condition(ABC):
     """ Base class all other conditions must inherit from and implement methods for. """

@@ -4,21 +4,18 @@ DataReaders need to implement.
 """
 
 # Parent class
-from abc import ABC, abstractmethod
 from datetime import datetime
-from typing import List
 
 import pandas as pd
 
 from .StockIO import StockIO
 
 # Misc.
-from ..Stock import Stock
+from src.stock_scanner.stock.Stock import Stock
 import os
 from yahooquery import Ticker
 from typing import List
-from yahoo_fin import stock_info as si
-
+from ..tickers import TickerFetcher
 
 class YahooIO(StockIO):
     """
@@ -44,7 +41,7 @@ class YahooIO(StockIO):
         """
         super().__init__(universe, path)
 
-        valid_universes: List[str] = ["nasdaq", "dow", "ftse100", "ftse250", "nifty50", "niftybank", "sp500"]
+        valid_universes: List[str] = ["nasdaq", "dow", "sp500", "stockholm"]
         if universe not in valid_universes:
             raise ValueError("Invalid universe given.")
 
@@ -61,6 +58,7 @@ class YahooIO(StockIO):
         self.high_key = high_key
         self.low_key = low_key
         self.date_key = date_key
+        self.ticker_fetcher = TickerFetcher()
 
     def downloadStockData(self, start_date: datetime, end_date: datetime, verbose: bool = False) -> "YahooIO":
         """
@@ -123,22 +121,16 @@ class YahooIO(StockIO):
         """
         if not self.tickers:
             if self.universe == "sp500":
-                self.tickers = si.tickers_sp500()
+                self.tickers = self.ticker_fetcher.getSP500()
             elif self.universe == "nasdaq":
-                self.tickers = si.tickers_nasdaq()
+                self.tickers = self.ticker_fetcher.getNasdaq()
             elif self.universe == "dow":
-                self.tickers = si.tickers_dow()
-            elif self.universe == "ftse100":
-                self.tickers = si.tickers_ftse100()
-            elif self.universe == "ftse250":
-                self.tickers = si.tickers_ftse250()
-            elif self.universe == "nifty50":
-                self.tickers = si.tickers_nifty50()
-            elif self.universe == "niftybank":
-                self.tickers = si.tickers_niftybank()
+                self.tickers = self.ticker_fetcher.getDow()
+            elif self.universe == "stockholm":
+                self.tickers = self.ticker_fetcher.getStockholm()
 
             # Yahoo Finance uses dashes instead of dots
-            self.tickers: List[str] = [item.replace(".", "-") for item in self.tickers]
+            #self.tickers: List[str] = [item.replace(".", "-") for item in self.tickers]
 
         if os.environ.get('MAX_TICKERS'):
             return self.tickers[:int(os.environ.get('MAX_TICKERS'))]

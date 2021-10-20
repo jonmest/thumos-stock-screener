@@ -3,7 +3,7 @@ import os
 from typing import List
 
 import pandas as pd
-from ..Stock import Stock
+from src.stock_scanner.stock.Stock import Stock
 import mplfinance as mpf
 
 def saveToPNG(path: str, stocks: List[Stock], dpi=250):

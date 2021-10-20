@@ -2,7 +2,6 @@
 from ..scanner.Scanner import Scanner
 
 # Data IO
-from ..io.YahooIO import YahooIO
 from ..io.StockIO import StockIO
 
 # Condition validation
@@ -12,7 +11,7 @@ from ..validator.BasicValidator import BasicValidator
 # Misc.
 import datetime
 import traceback
-from ..Stock import Stock
+from src.stock_scanner.stock.Stock import Stock
 from typing import List
 from ..condition.Condition import Condition
 
@@ -28,10 +27,8 @@ class BasicScanner(Scanner):
         Args:
             conditions (List[Condition]):
                 List of conditions stocks returned from scan should fulfill.
-            data_fetcher (DataFetcher):
-                An instance of DataFetcher.
-            data_reader (DataReader):
-                A reference to a DataReader.
+            stock_io (StockIO):
+                An instance of StockIO.
             validator (Validator):
                 A reference to a Validator, the default is BasicValidator.
         """

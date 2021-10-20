@@ -3,7 +3,7 @@ from ..data_reader.DataReader import DataReader
 
 # Misc.
 import pandas as pd
-from ..Stock import Stock
+from src.stock_scanner.stock.Stock import Stock
 
 
 class CSVReader(DataReader):

@@ -5,7 +5,7 @@ This module defines the function for saving a list of stock tickers to a text fi
 from datetime import datetime
 import os
 from typing import List
-from ..Stock import Stock
+from src.stock_scanner.stock.Stock import Stock
 
 
 def saveTickersToFile (path: str, file_name: str, stocks: List[Stock]) -> None:

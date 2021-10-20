@@ -4,17 +4,12 @@ from abc import ABC, abstractmethod
 from ..io.StockIO import StockIO
 
 # Data IO
-from ..data_reader.CSVReader import CSVReader
-from ..data_reader.DataReader import DataReader
-from ..data_fetcher.DataFetcher import DataFetcher
-from ..data_fetcher.YahooDataFetcher import YahooDataFetcher
 
 # Condition validation
 from ..validator.Validator import Validator
-from ..validator.BasicValidator import BasicValidator
 
 # Misc.
-from ..Stock import Stock
+from src.stock_scanner.stock.Stock import Stock
 from typing import List
 from ..condition.Condition import Condition
 

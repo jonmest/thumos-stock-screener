@@ -4,8 +4,8 @@ import pandas as pd
 
 class Stock:
     def __init__(self, ticker: str, df: pd.DataFrame, close_key: str = "adjclose",
-                volume_key: str = "volume", open_key: str = "open", 
-                high_key: str = "high", low_key: str = "low", date_key: str = "date") -> None:
+                 volume_key: str = "volume", open_key: str = "open",
+                 high_key: str = "high", low_key: str = "low", date_key: str = "date") -> None:
         self.ticker = ticker
         self.df = df
         self.close_key = close_key
@@ -26,7 +26,7 @@ class Stock:
 
     def getLow(self) -> pd.Series:
         return self.df[self.low_key]
-    
+
     def getHigh(self) -> pd.Series:
         return self.df[self.high_key]
 
@@ -35,16 +35,16 @@ class Stock:
 
     def getTicker(self) -> str:
         return self.ticker
-    
+
     def getDataFrame(self) -> pd.DataFrame:
         return self.df
-    
+
     def hasColumn(self, name: str) -> bool:
         return name in self.df
 
     def setColumn(self, name: str, column: pd.Series) -> None:
         self.df[name] = column
-    
+
     def getColumn(self, name: str) -> pd.Series:
         return self.df[name]
 

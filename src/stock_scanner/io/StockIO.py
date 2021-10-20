@@ -10,7 +10,7 @@ from typing import List
 from stock_scanner.data_fetcher.DataFetcher import DataFetcher
 
 # Misc.
-from ..Stock import Stock
+from src.stock_scanner.stock.Stock import Stock
 import os
 from datetime import datetime
 

@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 
 # Misc. for type hints
 from typing import List
-from ..Stock import Stock
+from src.stock_scanner.stock.Stock import Stock
 from ..condition.Condition import Condition
 
 
@@ -25,18 +25,9 @@ class Validator(ABC):
             raise ValueError('A list of Conditions needs to be supplied and can\t be empty')
         self.conditions: List[Condition] = conditions
     
-    @abstractmethod
-    def validation(self, stock: Stock) -> bool:
-        """
-        The implementation of your validation should be made here.
-        ...
-        Parameters
-        ----------
-        stock: Stock
-        """
-        return False
 
-    def isCandidate(self, stock: Stock) -> bool:
+    @abstractmethod
+    def isCandidate(self, stock: Stock, **kwargs) -> bool:
         """
         Parameters
         ----------
@@ -44,4 +35,4 @@ class Validator(ABC):
         """
         if stock is None:
             raise ValueError('A Stock instance needs to be supplied.')
-        return self.validation(stock)
+        return False

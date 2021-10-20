@@ -1,5 +1,5 @@
 from ..condition.Condition import Condition
-from ..Stock import Stock
+from src.stock_scanner.stock.Stock import Stock
 
 
 class Consolidating(Condition):
