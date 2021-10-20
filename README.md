@@ -1,10 +1,7 @@
 # Stock-scanner
-
-Stock-scanner is a Python3 package aimed at facilitating the rapid development of custom stock scanners/screeners. The
-goal is for it to be a sort of framework which easily lets users swap different modules at their own discretion.
+Stock-scanner is a Python3 package aimed at facilitating the rapid development of custom stock scanners/screeners. The goal is for it to be a sort of framework which easily lets users swap different modules at their own discretion.
 
 ## Example code
-
 Using a pre-written Condition:
 
 ```python
@@ -19,19 +16,17 @@ path = f'./{universe}'
 print("Looking for stocks above the 150 and 200 day SMA.")
 
 data_fetcher = YahooDataFetcher(universe, path)
-conditions = [Above150And200SMA]
+conditions = [ Above150And200SMA ]
 
 candidates = (
-    BasicScanner(conditions, data_fetcher)
-        .loadData()
-        .getCandidates()
+            BasicScanner(conditions, data_fetcher)
+                .loadData()
+                .getCandidates()
 )
 
 print(list(map(lambda x: x.getTicker(), candidates)))
 ```
-
 Writing a custom Condition:
-
 ```python
 from stock_screener import Stock
 from stock_screener.condition import Condition
@@ -40,7 +35,6 @@ from stock_screener.data_fetcher.YahooDataFetcher import YahooDataFetcher
 
 universe = 'nasdaq'
 path = f'./{universe}'
-
 
 # Has the stock consolidated?
 class Consolidating(Condition):
@@ -66,15 +60,14 @@ class Consolidating(Condition):
         """
         return self.min_close > (self.max_close * 0.97)
 
-
 print("Looking for consolidated stocks.")
 
 data_fetcher = YahooDataFetcher(universe, path)
-conditions = [Above150And200SMA, Consolidating]
+conditions = [ Above150And200SMA, Consolidating ]
 candidates = (
-    BasicScanner(conditions, data_fetcher)
-        .loadData()
-        .getCandidates()
+            BasicScanner(conditions, data_fetcher)
+                .loadData()
+                .getCandidates()
 )
 
 print(list(map(lambda x: x.getTicker(), candidates)))
@@ -82,14 +75,12 @@ print(list(map(lambda x: x.getTicker(), candidates)))
 
 ## Interfaces
 
-To achieve this goal of modularity, the framework has a few different interfaces you need to implement when writing your
-own extensions. They are:
+To achieve this goal of modularity, the framework has a few different interfaces you need to implement when writing your own extensions. They are:
 
 - DataFetcher - an interface for downloading stock data and saving it locally.
 - DataReader - an interface for reading stock data files.
 - Condition - an interface for checking whether a stock fulfills a condition.
-- Validator - an interface for deciding whether a stock should be returned as a candidate from the scan or not, given
-  the conditions it fulfills.
+- Validator - an interface for deciding whether a stock should be returned as a candidate from the scan or not, given the conditions it fulfills.
 - Scanner - an interface for the "main engine" of the scan.
 
 A general outline of the use of these interfaces could look as such:

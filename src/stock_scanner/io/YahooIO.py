@@ -3,29 +3,31 @@ This module contains the abstract class defining the interface ALL
 DataReaders need to implement.
 """
 
-import os
 # Parent class
+from abc import ABC, abstractmethod
 from datetime import datetime
 from typing import List
 
 import pandas as pd
-from yahooquery import Ticker
+
+from .StockIO import StockIO
 
 # Misc.
-from src.stock_scanner.stock.Stock import Stock
-from .StockIO import StockIO
-from ..tickers import TickerFetcher
+from ..Stock import Stock
+import os
+from yahooquery import Ticker
+from typing import List
+from yahoo_fin import stock_info as si
 
 
 class YahooIO(StockIO):
     """
     IO for Yahoo
     """
-
-    def __init__(self, universe: str, path: str, delimiter: str = None,
-                 close_key: str = "adjclose", volume_key: str = "volume",
-                 open_key: str = "open", high_key: str = "high",
-                 low_key: str = "low", date_key: str = "date") -> None:
+    def __init__(self, universe: str, path: str, delimiter: str = None, 
+                close_key: str = "adjclose", volume_key: str = "volume",
+                open_key: str = "open", high_key: str = "high", 
+                low_key: str = "low", date_key: str = "date") -> None:
         """
         Args:
             universe (str): The name of the universe (one implementation could for example allow "nasdaq" or "sp500")
@@ -42,7 +44,7 @@ class YahooIO(StockIO):
         """
         super().__init__(universe, path)
 
-        valid_universes: List[str] = ["nasdaq", "dow", "sp500", "stockholm"]
+        valid_universes: List[str] = ["nasdaq", "dow", "ftse100", "ftse250", "nifty50", "niftybank", "sp500"]
         if universe not in valid_universes:
             raise ValueError("Invalid universe given.")
 
@@ -59,7 +61,6 @@ class YahooIO(StockIO):
         self.high_key = high_key
         self.low_key = low_key
         self.date_key = date_key
-        self.ticker_fetcher = TickerFetcher()
 
     def downloadStockData(self, start_date: datetime, end_date: datetime, verbose: bool = False) -> "YahooIO":
         """
@@ -102,9 +103,9 @@ class YahooIO(StockIO):
         df: pd.DataFrame = pd.read_csv(
             path, index_col=0, delimiter=self.delimiter
         )
-        stock: Stock = Stock(ticker, df, self.close_key,
-                             self.volume_key, self.open_key, self.high_key,
-                             self.low_key, self.date_key)
+        stock: Stock = Stock(ticker, df, self.close_key, 
+            self.volume_key, self.open_key, self.high_key, 
+            self.low_key, self.date_key)
         return stock
 
     def __get_ticker_path__(self, ticker: str) -> str:
@@ -122,17 +123,24 @@ class YahooIO(StockIO):
         """
         if not self.tickers:
             if self.universe == "sp500":
-                self.tickers = self.ticker_fetcher.getSP500()
+                self.tickers = si.tickers_sp500()
             elif self.universe == "nasdaq":
-                self.tickers = self.ticker_fetcher.getNasdaq()
+                self.tickers = si.tickers_nasdaq()
             elif self.universe == "dow":
-                self.tickers = self.ticker_fetcher.getDow()
-            elif self.universe == "stockholm":
-                self.tickers = self.ticker_fetcher.getStockholm()
+                self.tickers = si.tickers_dow()
+            elif self.universe == "ftse100":
+                self.tickers = si.tickers_ftse100()
+            elif self.universe == "ftse250":
+                self.tickers = si.tickers_ftse250()
+            elif self.universe == "nifty50":
+                self.tickers = si.tickers_nifty50()
+            elif self.universe == "niftybank":
+                self.tickers = si.tickers_niftybank()
 
             # Yahoo Finance uses dashes instead of dots
-            # self.tickers: List[str] = [item.replace(".", "-") for item in self.tickers]
+            self.tickers: List[str] = [item.replace(".", "-") for item in self.tickers]
 
         if os.environ.get('MAX_TICKERS'):
             return self.tickers[:int(os.environ.get('MAX_TICKERS'))]
-        return self.tickers
+        else:
+            return self.tickers
