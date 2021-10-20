@@ -16,7 +16,6 @@ from .StockIO import StockIO
 from ..Stock import Stock
 import os
 from yahooquery import Ticker
-from typing import List
 from yahoo_fin import stock_info as si
 
 
