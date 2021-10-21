@@ -5,7 +5,7 @@ from typing import List
 # Misc.
 from src.stock_scanner.stock.Stock import Stock
 from ..condition.Condition import Condition
-from ..io.StockIO import StockIO
+from ..stock_io.StockIO import StockIO
 # Condition validation
 from ..validator.Validator import Validator
 
@@ -19,8 +19,8 @@ class Scanner(ABC):
 
     Methods:
         - __init__
-        - loadData
-        - getCandidates
+        - load_data
+        - get_candidates
     """
 
     def __init__(self, conditions: List[Condition],
@@ -29,11 +29,8 @@ class Scanner(ABC):
         Args:
             conditions (List[Condition]):
                 List of conditions stocks returned from scan should fulfill.
-            data_fetcher (DataFetcher, optional):
-                An instance of DataFetcher, default is YahooDataFetcher.
-            data_reader (DataReader, optional):
-                A reference to a DataReader, the default is CSVReader and is compatible with
-                files saved by YahooDataFetcher.
+            stock_io (StockIO, optional):
+                An instance of StockIO
             validator (Validator, optional):
                 A reference to a Validator, the default is BasicValidator.
         """
@@ -42,7 +39,7 @@ class Scanner(ABC):
         self.validator: Validator = validator
 
     @abstractmethod
-    def loadData(self, period: int = 365, verbose: bool = False) -> None:
+    def load_data(self, period: int = 365, verbose: bool = False) -> "Scanner":
         """
         Loads all stock data required for the scan.
 
@@ -56,7 +53,7 @@ class Scanner(ABC):
         return self
 
     @abstractmethod
-    def getCandidates(self, verbose: bool = False) -> List[Stock]:
+    def get_candidates(self, verbose: bool = False) -> List[Stock]:
         """
         Return candidate stocks from the scan.
 

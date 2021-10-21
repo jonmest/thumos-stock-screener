@@ -22,7 +22,7 @@ class YahooIO(StockIO):
     IO for Yahoo
     """
 
-    def __init__(self, universe: str, path: str, delimiter: str = None,
+    def __init__(self, universe: str, path: str, max_tickers=None, delimiter: str = None,
                  close_key: str = "adjclose", volume_key: str = "volume",
                  open_key: str = "open", high_key: str = "high",
                  low_key: str = "low", date_key: str = "date") -> None:
@@ -51,7 +51,7 @@ class YahooIO(StockIO):
 
         self.path = path
         self.tickers = None
-
+        self.max_tickers = max_tickers
         self.delimiter = delimiter
         self.close_key = close_key
         self.volume_key = volume_key
@@ -60,7 +60,7 @@ class YahooIO(StockIO):
         self.low_key = low_key
         self.date_key = date_key
 
-    def downloadStockData(self, start_date: datetime, end_date: datetime, verbose: bool = False) -> "YahooIO":
+    def download_stock_data(self, start_date: datetime, end_date: datetime, verbose: bool = False) -> "YahooIO":
         """
         Downloading the data for stocks in the given the given universe.
 
@@ -71,9 +71,9 @@ class YahooIO(StockIO):
                 currently being downloaded. Handy for debugging purposes.
         """
         if not self.tickers:
-            self.getTickers()
-        if os.environ.get('MAX_TICKERS'):
-            tickers = self.tickers[:int(os.environ.get('MAX_TICKERS'))]
+            self.get_tickers()
+        if self.max_tickers:
+            tickers = self.tickers[:self.max_tickers]
         else:
             tickers = self.tickers
 
@@ -115,7 +115,7 @@ class YahooIO(StockIO):
         """
         return os.path.join(self.path, f"{ticker}.csv")
 
-    def getTickers(self) -> List[str]:
+    def get_tickers(self) -> List[str]:
         """
         A convenient getter method for the ticker list.
         """

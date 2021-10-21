@@ -28,9 +28,9 @@ class AboveTwoSMAs(Condition):
         Args:
             stock (Stock)
         """
-        current_close = stock.getClose()[-1]
-        sma1 = round(stock.getClose().rolling(window=self.sma1_period).mean(), 2)
-        sma2 = round(stock.getClose().rolling(window=self.sma2_period).mean(), 2)
+        current_close = stock.get_close()[-1]
+        sma1 = round(stock.get_close().rolling(window=self.sma1_period).mean(), 2)
+        sma2 = round(stock.get_close().rolling(window=self.sma2_period).mean(), 2)
         try:
             return current_close > sma1[-1] and current_close > sma2[-1]
         except IndexError:

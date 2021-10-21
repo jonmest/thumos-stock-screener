@@ -1202,40 +1202,40 @@
                         <a class="function" href="#Stock.__init__">Stock</a>
                     </li>
                     <li>
-                        <a class="function" href="#Stock.getClose">getClose</a>
+                        <a class="function" href="#Stock.getClose">get_close</a>
                     </li>
                     <li>
-                        <a class="function" href="#Stock.getVolume">getVolume</a>
+                        <a class="function" href="#Stock.getVolume">get_volume</a>
                     </li>
                     <li>
-                        <a class="function" href="#Stock.getOpen">getOpen</a>
+                        <a class="function" href="#Stock.getOpen">get_open</a>
                     </li>
                     <li>
-                        <a class="function" href="#Stock.getLow">getLow</a>
+                        <a class="function" href="#Stock.getLow">get_low</a>
                     </li>
                     <li>
-                        <a class="function" href="#Stock.getHigh">getHigh</a>
+                        <a class="function" href="#Stock.getHigh">get_high</a>
                     </li>
                     <li>
-                        <a class="function" href="#Stock.getDate">getDate</a>
+                        <a class="function" href="#Stock.getDate">get_date</a>
                     </li>
                     <li>
-                        <a class="function" href="#Stock.getTicker">getTicker</a>
+                        <a class="function" href="#Stock.getTicker">get_ticker</a>
                     </li>
                     <li>
-                        <a class="function" href="#Stock.getDataFrame">getDataFrame</a>
+                        <a class="function" href="#Stock.getDataFrame">get_dataframe</a>
                     </li>
                     <li>
-                        <a class="function" href="#Stock.hasColumn">hasColumn</a>
+                        <a class="function" href="#Stock.hasColumn">has_column</a>
                     </li>
                     <li>
-                        <a class="function" href="#Stock.setColumn">setColumn</a>
+                        <a class="function" href="#Stock.setColumn">set_column</a>
                     </li>
                     <li>
-                        <a class="function" href="#Stock.getColumn">getColumn</a>
+                        <a class="function" href="#Stock.getColumn">get_column</a>
                     </li>
                     <li>
-                        <a class="function" href="#Stock.getColumns">getColumns</a>
+                        <a class="function" href="#Stock.getColumns">get_columns</a>
                     </li>
                 </ul>
 
@@ -1302,67 +1302,67 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">date_key</span> <span
                         class="o">=</span> <span class="n">date_key</span>
 
-    <span class="k">def</span> <span class="nf">getClose</span><span class="p">(</span><span class="bp">self</span><span
+    <span class="k">def</span> <span class="nf">get_close</span><span class="p">(</span><span class="bp">self</span><span
                         class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span
                         class="o">.</span><span class="n">Series</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span
                         class="p">[</span><span class="bp">self</span><span class="o">.</span><span
                         class="n">close_key</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">getVolume</span><span class="p">(</span><span
+    <span class="k">def</span> <span class="nf">get_volume</span><span class="p">(</span><span
                         class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span
                         class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span
                         class="p">[</span><span class="bp">self</span><span class="o">.</span><span
                         class="n">volume_key</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">getOpen</span><span class="p">(</span><span class="bp">self</span><span
+    <span class="k">def</span> <span class="nf">get_open</span><span class="p">(</span><span class="bp">self</span><span
                         class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span
                         class="o">.</span><span class="n">Series</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span
                         class="p">[</span><span class="bp">self</span><span class="o">.</span><span
                         class="n">open_key</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">getLow</span><span class="p">(</span><span class="bp">self</span><span
+    <span class="k">def</span> <span class="nf">get_low</span><span class="p">(</span><span class="bp">self</span><span
                         class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span
                         class="o">.</span><span class="n">Series</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span
                         class="p">[</span><span class="bp">self</span><span class="o">.</span><span
                         class="n">low_key</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">getHigh</span><span class="p">(</span><span class="bp">self</span><span
+    <span class="k">def</span> <span class="nf">get_high</span><span class="p">(</span><span class="bp">self</span><span
                         class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span
                         class="o">.</span><span class="n">Series</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span
                         class="p">[</span><span class="bp">self</span><span class="o">.</span><span
                         class="n">high_key</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">getDate</span><span class="p">(</span><span class="bp">self</span><span
+    <span class="k">def</span> <span class="nf">get_date</span><span class="p">(</span><span class="bp">self</span><span
                         class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span
                         class="o">.</span><span class="n">Series</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span
                         class="p">[</span><span class="bp">self</span><span class="o">.</span><span
                         class="n">date_key</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">getTicker</span><span class="p">(</span><span
+    <span class="k">def</span> <span class="nf">get_ticker</span><span class="p">(</span><span
                         class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span
                         class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ticker</span>
 
-    <span class="k">def</span> <span class="nf">getDataFrame</span><span class="p">(</span><span
+    <span class="k">def</span> <span class="nf">get_dataframe</span><span class="p">(</span><span
                         class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span
                         class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span
                         class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span>
 
-    <span class="k">def</span> <span class="nf">hasColumn</span><span class="p">(</span><span
+    <span class="k">def</span> <span class="nf">has_column</span><span class="p">(</span><span
                         class="bp">self</span><span class="p">,</span> <span class="n">name</span><span
                         class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span
                         class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">name</span> <span class="ow">in</span> <span
                         class="bp">self</span><span class="o">.</span><span class="n">df</span>
 
-    <span class="k">def</span> <span class="nf">setColumn</span><span class="p">(</span><span
+    <span class="k">def</span> <span class="nf">set_column</span><span class="p">(</span><span
                         class="bp">self</span><span class="p">,</span> <span class="n">name</span><span
                         class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span
                         class="n">column</span><span class="p">:</span> <span class="n">pd</span><span
@@ -1372,7 +1372,7 @@
                         class="n">name</span><span class="p">]</span> <span class="o">=</span> <span
                         class="n">column</span>
 
-    <span class="k">def</span> <span class="nf">getColumn</span><span class="p">(</span><span
+    <span class="k">def</span> <span class="nf">get_column</span><span class="p">(</span><span
                         class="bp">self</span><span class="p">,</span> <span class="n">name</span><span
                         class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span
                         class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span
@@ -1380,7 +1380,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span
                         class="p">[</span><span class="n">name</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">getColumns</span><span class="p">(</span><span
+    <span class="k">def</span> <span class="nf">get_columns</span><span class="p">(</span><span
                         class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span
                         class="n">List</span><span class="p">[</span><span class="nb">str</span><span
                         class="p">]:</span>
@@ -1440,67 +1440,67 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">date_key</span> <span
                         class="o">=</span> <span class="n">date_key</span>
 
-    <span class="k">def</span> <span class="nf">getClose</span><span class="p">(</span><span class="bp">self</span><span
+    <span class="k">def</span> <span class="nf">get_close</span><span class="p">(</span><span class="bp">self</span><span
                         class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span
                         class="o">.</span><span class="n">Series</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span
                         class="p">[</span><span class="bp">self</span><span class="o">.</span><span
                         class="n">close_key</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">getVolume</span><span class="p">(</span><span
+    <span class="k">def</span> <span class="nf">get_volume</span><span class="p">(</span><span
                         class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span
                         class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span
                         class="p">[</span><span class="bp">self</span><span class="o">.</span><span
                         class="n">volume_key</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">getOpen</span><span class="p">(</span><span class="bp">self</span><span
+    <span class="k">def</span> <span class="nf">get_open</span><span class="p">(</span><span class="bp">self</span><span
                         class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span
                         class="o">.</span><span class="n">Series</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span
                         class="p">[</span><span class="bp">self</span><span class="o">.</span><span
                         class="n">open_key</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">getLow</span><span class="p">(</span><span class="bp">self</span><span
+    <span class="k">def</span> <span class="nf">get_low</span><span class="p">(</span><span class="bp">self</span><span
                         class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span
                         class="o">.</span><span class="n">Series</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span
                         class="p">[</span><span class="bp">self</span><span class="o">.</span><span
                         class="n">low_key</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">getHigh</span><span class="p">(</span><span class="bp">self</span><span
+    <span class="k">def</span> <span class="nf">get_high</span><span class="p">(</span><span class="bp">self</span><span
                         class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span
                         class="o">.</span><span class="n">Series</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span
                         class="p">[</span><span class="bp">self</span><span class="o">.</span><span
                         class="n">high_key</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">getDate</span><span class="p">(</span><span class="bp">self</span><span
+    <span class="k">def</span> <span class="nf">get_date</span><span class="p">(</span><span class="bp">self</span><span
                         class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span
                         class="o">.</span><span class="n">Series</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span
                         class="p">[</span><span class="bp">self</span><span class="o">.</span><span
                         class="n">date_key</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">getTicker</span><span class="p">(</span><span
+    <span class="k">def</span> <span class="nf">get_ticker</span><span class="p">(</span><span
                         class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span
                         class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ticker</span>
 
-    <span class="k">def</span> <span class="nf">getDataFrame</span><span class="p">(</span><span
+    <span class="k">def</span> <span class="nf">get_dataframe</span><span class="p">(</span><span
                         class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span
                         class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span
                         class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span>
 
-    <span class="k">def</span> <span class="nf">hasColumn</span><span class="p">(</span><span
+    <span class="k">def</span> <span class="nf">has_column</span><span class="p">(</span><span
                         class="bp">self</span><span class="p">,</span> <span class="n">name</span><span
                         class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span
                         class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">name</span> <span class="ow">in</span> <span
                         class="bp">self</span><span class="o">.</span><span class="n">df</span>
 
-    <span class="k">def</span> <span class="nf">setColumn</span><span class="p">(</span><span
+    <span class="k">def</span> <span class="nf">set_column</span><span class="p">(</span><span
                         class="bp">self</span><span class="p">,</span> <span class="n">name</span><span
                         class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span
                         class="n">column</span><span class="p">:</span> <span class="n">pd</span><span
@@ -1510,7 +1510,7 @@
                         class="n">name</span><span class="p">]</span> <span class="o">=</span> <span
                         class="n">column</span>
 
-    <span class="k">def</span> <span class="nf">getColumn</span><span class="p">(</span><span
+    <span class="k">def</span> <span class="nf">get_column</span><span class="p">(</span><span
                         class="bp">self</span><span class="p">,</span> <span class="n">name</span><span
                         class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span
                         class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span
@@ -1518,7 +1518,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span
                         class="p">[</span><span class="n">name</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">getColumns</span><span class="p">(</span><span
+    <span class="k">def</span> <span class="nf">get_columns</span><span class="p">(</span><span
                         class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span
                         class="n">List</span><span class="p">[</span><span class="nb">str</span><span
                         class="p">]:</span>
@@ -1595,13 +1595,13 @@
 
 
                 <span class="def">def</span>
-                <span class="name">getClose</span><span class="signature">(self) -&gt; pandas.core.series.Series</span>:
+                <span class="name">get_close</span><span class="signature">(self) -&gt; pandas.core.series.Series</span>:
             </div>
 
             <details>
                 <summary>View Source</summary>
                 <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span
-                        class="nf">getClose</span><span class="p">(</span><span class="bp">self</span><span
+                        class="nf">get_close</span><span class="p">(</span><span class="bp">self</span><span
                         class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span
                         class="o">.</span><span class="n">Series</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span
@@ -1619,13 +1619,13 @@
 
 
                 <span class="def">def</span>
-                <span class="name">getVolume</span><span class="signature">(self) -&gt; pandas.core.series.Series</span>:
+                <span class="name">get_volume</span><span class="signature">(self) -&gt; pandas.core.series.Series</span>:
             </div>
 
             <details>
                 <summary>View Source</summary>
                 <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span
-                        class="nf">getVolume</span><span class="p">(</span><span class="bp">self</span><span
+                        class="nf">get_volume</span><span class="p">(</span><span class="bp">self</span><span
                         class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span
                         class="o">.</span><span class="n">Series</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span
@@ -1643,12 +1643,12 @@
 
 
                 <span class="def">def</span>
-                <span class="name">getOpen</span><span class="signature">(self) -&gt; pandas.core.series.Series</span>:
+                <span class="name">get_open</span><span class="signature">(self) -&gt; pandas.core.series.Series</span>:
             </div>
 
             <details>
                 <summary>View Source</summary>
-                <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">getOpen</span><span
+                <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">get_open</span><span
                         class="p">(</span><span class="bp">self</span><span class="p">)</span> <span
                         class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span
                         class="n">Series</span><span class="p">:</span>
@@ -1667,13 +1667,13 @@
 
 
                 <span class="def">def</span>
-                <span class="name">getLow</span><span class="signature">(self) -&gt; pandas.core.series.Series</span>:
+                <span class="name">get_low</span><span class="signature">(self) -&gt; pandas.core.series.Series</span>:
             </div>
 
             <details>
                 <summary>View Source</summary>
                 <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span
-                        class="nf">getLow</span><span class="p">(</span><span class="bp">self</span><span
+                        class="nf">get_low</span><span class="p">(</span><span class="bp">self</span><span
                         class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span
                         class="o">.</span><span class="n">Series</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span
@@ -1691,12 +1691,12 @@
 
 
                 <span class="def">def</span>
-                <span class="name">getHigh</span><span class="signature">(self) -&gt; pandas.core.series.Series</span>:
+                <span class="name">get_high</span><span class="signature">(self) -&gt; pandas.core.series.Series</span>:
             </div>
 
             <details>
                 <summary>View Source</summary>
-                <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">getHigh</span><span
+                <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">get_high</span><span
                         class="p">(</span><span class="bp">self</span><span class="p">)</span> <span
                         class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span
                         class="n">Series</span><span class="p">:</span>
@@ -1715,12 +1715,12 @@
 
 
                 <span class="def">def</span>
-                <span class="name">getDate</span><span class="signature">(self) -&gt; pandas.core.series.Series</span>:
+                <span class="name">get_date</span><span class="signature">(self) -&gt; pandas.core.series.Series</span>:
             </div>
 
             <details>
                 <summary>View Source</summary>
-                <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">getDate</span><span
+                <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">get_date</span><span
                         class="p">(</span><span class="bp">self</span><span class="p">)</span> <span
                         class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span
                         class="n">Series</span><span class="p">:</span>
@@ -1739,13 +1739,13 @@
 
 
                 <span class="def">def</span>
-                <span class="name">getTicker</span><span class="signature">(self) -&gt; str</span>:
+                <span class="name">get_ticker</span><span class="signature">(self) -&gt; str</span>:
             </div>
 
             <details>
                 <summary>View Source</summary>
                 <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span
-                        class="nf">getTicker</span><span class="p">(</span><span class="bp">self</span><span
+                        class="nf">get_ticker</span><span class="p">(</span><span class="bp">self</span><span
                         class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span
                         class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ticker</span>
@@ -1761,14 +1761,14 @@
 
 
                 <span class="def">def</span>
-                <span class="name">getDataFrame</span><span
+                <span class="name">get_dataframe</span><span
                         class="signature">(self) -&gt; pandas.core.frame.DataFrame</span>:
             </div>
 
             <details>
                 <summary>View Source</summary>
                 <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span
-                        class="nf">getDataFrame</span><span class="p">(</span><span class="bp">self</span><span
+                        class="nf">get_dataframe</span><span class="p">(</span><span class="bp">self</span><span
                         class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span
                         class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span>
@@ -1784,13 +1784,13 @@
 
 
                 <span class="def">def</span>
-                <span class="name">hasColumn</span><span class="signature">(self, name: str) -&gt; bool</span>:
+                <span class="name">has_column</span><span class="signature">(self, name: str) -&gt; bool</span>:
             </div>
 
             <details>
                 <summary>View Source</summary>
                 <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span
-                        class="nf">hasColumn</span><span class="p">(</span><span class="bp">self</span><span
+                        class="nf">has_column</span><span class="p">(</span><span class="bp">self</span><span
                         class="p">,</span> <span class="n">name</span><span class="p">:</span> <span
                         class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span
                         class="nb">bool</span><span class="p">:</span>
@@ -1808,13 +1808,13 @@
 
 
                 <span class="def">def</span>
-                <span class="name">setColumn</span><span class="signature">(self, name: str, column: pandas.core.series.Series) -&gt; None</span>:
+                <span class="name">set_column</span><span class="signature">(self, name: str, column: pandas.core.series.Series) -&gt; None</span>:
             </div>
 
             <details>
                 <summary>View Source</summary>
                 <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span
-                        class="nf">setColumn</span><span class="p">(</span><span class="bp">self</span><span
+                        class="nf">set_column</span><span class="p">(</span><span class="bp">self</span><span
                         class="p">,</span> <span class="n">name</span><span class="p">:</span> <span
                         class="nb">str</span><span class="p">,</span> <span class="n">column</span><span
                         class="p">:</span> <span class="n">pd</span><span class="o">.</span><span
@@ -1834,13 +1834,13 @@
 
 
                 <span class="def">def</span>
-                <span class="name">getColumn</span><span class="signature">(self, name: str) -&gt; pandas.core.series.Series</span>:
+                <span class="name">get_column</span><span class="signature">(self, name: str) -&gt; pandas.core.series.Series</span>:
             </div>
 
             <details>
                 <summary>View Source</summary>
                 <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span
-                        class="nf">getColumn</span><span class="p">(</span><span class="bp">self</span><span
+                        class="nf">get_column</span><span class="p">(</span><span class="bp">self</span><span
                         class="p">,</span> <span class="n">name</span><span class="p">:</span> <span
                         class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span
                         class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
@@ -1858,13 +1858,13 @@
 
 
                 <span class="def">def</span>
-                <span class="name">getColumns</span><span class="signature">(self) -&gt; List[str]</span>:
+                <span class="name">get_columns</span><span class="signature">(self) -&gt; List[str]</span>:
             </div>
 
             <details>
                 <summary>View Source</summary>
                 <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span
-                        class="nf">getColumns</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span
+                        class="nf">get_columns</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span
                         class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span
                         class="nb">str</span><span class="p">]:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span

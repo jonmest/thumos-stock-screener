@@ -30,5 +30,5 @@ def saveTickersToFile(path: str, file_name: str, stocks: List[Stock]) -> None:
     now = datetime.now()
     file.write("Scan performed: " + now.strftime("%b %d, %Y %H:%M:%S") + "\n")
     for stock in stocks:
-        file.write(f"{stock.getTicker()}\n")
+        file.write(f"{stock.get_ticker()}\n")
     file.close()

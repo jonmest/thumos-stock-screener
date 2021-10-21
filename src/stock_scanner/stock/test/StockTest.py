@@ -24,7 +24,7 @@ class StockTest(unittest.TestCase):
 
     def test_can_get_close(self):
         expected = self.__stock_data["close"]
-        actual = self.__stock.getClose()
+        actual = self.__stock.get_close()
 
         self.assertEqual(len(expected), len(actual))
         for e, a in zip(expected, actual):
@@ -32,7 +32,7 @@ class StockTest(unittest.TestCase):
 
     def test_can_get_open(self):
         expected = self.__stock_data["open"]
-        actual = self.__stock.getOpen()
+        actual = self.__stock.get_open()
 
         self.assertEqual(len(expected), len(actual))
         for e, a in zip(expected, actual):
@@ -40,7 +40,7 @@ class StockTest(unittest.TestCase):
 
     def test_can_get_low(self):
         expected = self.__stock_data["low"]
-        actual = self.__stock.getLow()
+        actual = self.__stock.get_low()
 
         self.assertEqual(len(expected), len(actual))
         for e, a in zip(expected, actual):
@@ -48,7 +48,7 @@ class StockTest(unittest.TestCase):
 
     def test_can_get_high(self):
         expected = self.__stock_data["high"]
-        actual = self.__stock.getHigh()
+        actual = self.__stock.get_high()
 
         self.assertEqual(len(expected), len(actual))
         for e, a in zip(expected, actual):
@@ -56,7 +56,7 @@ class StockTest(unittest.TestCase):
 
     def test_can_get_volume(self):
         expected = self.__stock_data["volume"]
-        actual = self.__stock.getVolume()
+        actual = self.__stock.get_volume()
 
         self.assertEqual(len(expected), len(actual))
         for e, a in zip(expected, actual):
@@ -64,15 +64,15 @@ class StockTest(unittest.TestCase):
 
     def test_can_get_date(self):
         expected = self.__stock_data["date"]
-        actual = self.__stock.getDate()
+        actual = self.__stock.get_date()
 
         self.assertEqual(len(expected), len(actual))
         for e, a in zip(expected, actual):
             self.assertEqual(e, a)
 
     def test_has_column(self):
-        self.assertTrue(self.__stock.hasColumn("close"))
-        self.assertFalse(self.__stock.hasColumn("Mark Minervini"))
+        self.assertTrue(self.__stock.has_column("close"))
+        self.assertFalse(self.__stock.has_column("Mark Minervini"))
 
 
 if __name__ == '__main__':

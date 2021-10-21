@@ -1214,10 +1214,10 @@
                         <a class="variable" href="#Scanner.validator">validator</a>
                     </li>
                     <li>
-                        <a class="function" href="#Scanner.loadData">loadData</a>
+                        <a class="function" href="#Scanner.loadData">load_data</a>
                     </li>
                     <li>
-                        <a class="function" href="#Scanner.getCandidates">getCandidates</a>
+                        <a class="function" href="#Scanner.getCandidates">get_candidates</a>
                     </li>
                 </ul>
 
@@ -1279,8 +1279,8 @@
 
 <span class="sd">    Methods:</span>
 <span class="sd">        - __init__</span>
-<span class="sd">        - loadData</span>
-<span class="sd">        - getCandidates</span>
+<span class="sd">        - load_data</span>
+<span class="sd">        - get_candidates</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span
                         class="p">,</span> <span class="n">conditions</span><span class="p">:</span> <span class="n">List</span><span
@@ -1315,7 +1315,7 @@
                         class="p">:</span> <span class="n">Validator</span> <span class="o">=</span> <span class="n">validator</span>
 
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">loadData</span><span class="p">(</span><span class="bp">self</span><span
+    <span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="bp">self</span><span
                         class="p">,</span> <span class="n">period</span><span class="p">:</span> <span
                         class="nb">int</span> <span class="o">=</span> <span class="mi">365</span><span
                         class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span
@@ -1335,7 +1335,7 @@
         <span class="k">return</span> <span class="bp">self</span>
 
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">getCandidates</span><span class="p">(</span><span class="bp">self</span><span
+    <span class="k">def</span> <span class="nf">get_candidates</span><span class="p">(</span><span class="bp">self</span><span
                         class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span
                         class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span
                         class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span
@@ -1375,8 +1375,8 @@
 
 <span class="sd">    Methods:</span>
 <span class="sd">        - __init__</span>
-<span class="sd">        - loadData</span>
-<span class="sd">        - getCandidates</span>
+<span class="sd">        - load_data</span>
+<span class="sd">        - get_candidates</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span
                         class="p">,</span> <span class="n">conditions</span><span class="p">:</span> <span class="n">List</span><span
@@ -1411,7 +1411,7 @@
                         class="p">:</span> <span class="n">Validator</span> <span class="o">=</span> <span class="n">validator</span>
 
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">loadData</span><span class="p">(</span><span class="bp">self</span><span
+    <span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="bp">self</span><span
                         class="p">,</span> <span class="n">period</span><span class="p">:</span> <span
                         class="nb">int</span> <span class="o">=</span> <span class="mi">365</span><span
                         class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span
@@ -1431,7 +1431,7 @@
         <span class="k">return</span> <span class="bp">self</span>
 
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">getCandidates</span><span class="p">(</span><span class="bp">self</span><span
+    <span class="k">def</span> <span class="nf">get_candidates</span><span class="p">(</span><span class="bp">self</span><span
                         class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span
                         class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span
                         class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span
@@ -1458,8 +1458,8 @@
             <blockquote>
                 <ul>
                     <li>__init__</li>
-                    <li>loadData</li>
-                    <li>getCandidates</li>
+                    <li>load_data</li>
+                    <li>get_candidates</li>
                 </ul>
             </blockquote>
         </div>
@@ -1584,13 +1584,13 @@
                 <div class="decorator">@abstractmethod</div>
 
                 <span class="def">def</span>
-                <span class="name">loadData</span><span class="signature">(self, period: int = 365, verbose: bool = False) -&gt; None</span>:
+                <span class="name">load_data</span><span class="signature">(self, period: int = 365, verbose: bool = False) -&gt; None</span>:
             </div>
 
             <details>
                 <summary>View Source</summary>
                 <div class="codehilite"><pre><span></span>    <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">loadData</span><span class="p">(</span><span class="bp">self</span><span
+    <span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="bp">self</span><span
                             class="p">,</span> <span class="n">period</span><span class="p">:</span> <span class="nb">int</span> <span
                             class="o">=</span> <span class="mi">365</span><span class="p">,</span> <span class="n">verbose</span><span
                             class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span
@@ -1632,14 +1632,14 @@
                 <div class="decorator">@abstractmethod</div>
 
                 <span class="def">def</span>
-                <span class="name">getCandidates</span><span class="signature">(self, verbose: bool = False) -&gt; List[<a
+                <span class="name">get_candidates</span><span class="signature">(self, verbose: bool = False) -&gt; List[<a
                         href="../Stock.html#Stock">stock_scanner.Stock.Stock</a>]</span>:
             </div>
 
             <details>
                 <summary>View Source</summary>
                 <div class="codehilite"><pre><span></span>    <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">getCandidates</span><span class="p">(</span><span class="bp">self</span><span
+    <span class="k">def</span> <span class="nf">get_candidates</span><span class="p">(</span><span class="bp">self</span><span
                             class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span
                             class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span
                             class="n">List</span><span class="p">[</span><span class="n">Stock</span><span

@@ -3,6 +3,7 @@ test_output
 setup.cfg
 dist
 .vscode
+*venv*
 **/__pycache__/
 nasdaq
 *.test.py

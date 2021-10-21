@@ -1254,12 +1254,12 @@
     <span class="k">for</span> <span class="n">stock</span> <span class="ow">in</span> <span
                         class="n">stocks</span><span class="p">:</span>
         <span class="n">ticker</span> <span class="o">=</span> <span class="n">stock</span><span class="o">.</span><span
-                        class="n">getTicker</span><span class="p">()</span>
+                        class="n">get_ticker</span><span class="p">()</span>
         <span class="n">location</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span
                         class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span
                         class="nb">dir</span><span class="p">,</span> <span class="sa">f</span><span
                         class="s2">&quot;</span><span class="si">{</span><span class="n">stock</span><span
-                        class="o">.</span><span class="n">getTicker</span><span class="p">()</span><span
+                        class="o">.</span><span class="n">get_ticker</span><span class="p">()</span><span
                         class="si">}</span><span class="s2">.html&quot;</span><span class="p">)</span>
 
         <span class="n">fig</span> <span class="o">=</span> <span class="n">make_subplots</span><span class="p">(</span><span
@@ -1276,16 +1276,16 @@
         <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
             <span class="n">go</span><span class="o">.</span><span class="n">Candlestick</span><span
                         class="p">(</span><span class="n">x</span><span class="o">=</span><span
-                        class="n">stock</span><span class="o">.</span><span class="n">getDate</span><span
+                        class="n">stock</span><span class="o">.</span><span class="n">get_date</span><span
                         class="p">(),</span>
                         <span class="nb">open</span><span class="o">=</span><span class="n">stock</span><span class="o">.</span><span
-                        class="n">getOpen</span><span class="p">(),</span>
+                        class="n">get_open</span><span class="p">(),</span>
                         <span class="n">high</span><span class="o">=</span><span class="n">stock</span><span
-                        class="o">.</span><span class="n">getHigh</span><span class="p">(),</span>
+                        class="o">.</span><span class="n">get_high</span><span class="p">(),</span>
                         <span class="n">low</span><span class="o">=</span><span class="n">stock</span><span
-                        class="o">.</span><span class="n">getLow</span><span class="p">(),</span>
+                        class="o">.</span><span class="n">get_low</span><span class="p">(),</span>
                         <span class="n">close</span><span class="o">=</span><span class="n">stock</span><span class="o">.</span><span
-                        class="n">getClose</span><span class="p">()</span>
+                        class="n">get_close</span><span class="p">()</span>
                         <span class="p">),</span>
             <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span
                         class="n">col</span><span class="o">=</span><span class="mi">1</span>
@@ -1294,9 +1294,9 @@
         <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
             <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span
                         class="n">x</span><span class="o">=</span><span class="n">stock</span><span
-                        class="o">.</span><span class="n">getDate</span><span class="p">(),</span> <span
+                        class="o">.</span><span class="n">get_date</span><span class="p">(),</span> <span
                         class="n">y</span><span class="o">=</span><span class="n">stock</span><span
-                        class="o">.</span><span class="n">getVolume</span><span class="p">()),</span>
+                        class="o">.</span><span class="n">get_volume</span><span class="p">()),</span>
             <span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span
                         class="n">col</span><span class="o">=</span><span class="mi">1</span>
         <span class="p">)</span>
@@ -1349,12 +1349,12 @@
     <span class="k">for</span> <span class="n">stock</span> <span class="ow">in</span> <span
                         class="n">stocks</span><span class="p">:</span>
         <span class="n">ticker</span> <span class="o">=</span> <span class="n">stock</span><span class="o">.</span><span
-                        class="n">getTicker</span><span class="p">()</span>
+                        class="n">get_ticker</span><span class="p">()</span>
         <span class="n">location</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span
                         class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span
                         class="nb">dir</span><span class="p">,</span> <span class="sa">f</span><span
                         class="s2">&quot;</span><span class="si">{</span><span class="n">stock</span><span
-                        class="o">.</span><span class="n">getTicker</span><span class="p">()</span><span
+                        class="o">.</span><span class="n">get_ticker</span><span class="p">()</span><span
                         class="si">}</span><span class="s2">.html&quot;</span><span class="p">)</span>
 
         <span class="n">fig</span> <span class="o">=</span> <span class="n">make_subplots</span><span class="p">(</span><span
@@ -1371,16 +1371,16 @@
         <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
             <span class="n">go</span><span class="o">.</span><span class="n">Candlestick</span><span
                         class="p">(</span><span class="n">x</span><span class="o">=</span><span
-                        class="n">stock</span><span class="o">.</span><span class="n">getDate</span><span
+                        class="n">stock</span><span class="o">.</span><span class="n">get_date</span><span
                         class="p">(),</span>
                         <span class="nb">open</span><span class="o">=</span><span class="n">stock</span><span class="o">.</span><span
-                        class="n">getOpen</span><span class="p">(),</span>
+                        class="n">get_open</span><span class="p">(),</span>
                         <span class="n">high</span><span class="o">=</span><span class="n">stock</span><span
-                        class="o">.</span><span class="n">getHigh</span><span class="p">(),</span>
+                        class="o">.</span><span class="n">get_high</span><span class="p">(),</span>
                         <span class="n">low</span><span class="o">=</span><span class="n">stock</span><span
-                        class="o">.</span><span class="n">getLow</span><span class="p">(),</span>
+                        class="o">.</span><span class="n">get_low</span><span class="p">(),</span>
                         <span class="n">close</span><span class="o">=</span><span class="n">stock</span><span class="o">.</span><span
-                        class="n">getClose</span><span class="p">()</span>
+                        class="n">get_close</span><span class="p">()</span>
                         <span class="p">),</span>
             <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span
                         class="n">col</span><span class="o">=</span><span class="mi">1</span>
@@ -1389,9 +1389,9 @@
         <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
             <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span
                         class="n">x</span><span class="o">=</span><span class="n">stock</span><span
-                        class="o">.</span><span class="n">getDate</span><span class="p">(),</span> <span
+                        class="o">.</span><span class="n">get_date</span><span class="p">(),</span> <span
                         class="n">y</span><span class="o">=</span><span class="n">stock</span><span
-                        class="o">.</span><span class="n">getVolume</span><span class="p">()),</span>
+                        class="o">.</span><span class="n">get_volume</span><span class="p">()),</span>
             <span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span
                         class="n">col</span><span class="o">=</span><span class="mi">1</span>
         <span class="p">)</span>

@@ -1,12 +1,10 @@
-from typing import List
-
 import pandas as pd
 
 
 class Stock:
     def __init__(self, ticker: str, df: pd.DataFrame, close_key: str = "adjclose",
-                volume_key: str = "volume", open_key: str = "open", 
-                high_key: str = "high", low_key: str = "low", date_key: str = "date") -> None:
+                 volume_key: str = "volume", open_key: str = "open",
+                 high_key: str = "high", low_key: str = "low", date_key: str = "date") -> None:
         self.ticker = ticker
         self.df = df
         self.close_key = close_key
@@ -16,38 +14,38 @@ class Stock:
         self.low_key = low_key
         self.date_key = date_key
 
-    def getClose(self) -> pd.Series:
+    def get_close(self) -> pd.Series:
         return self.df[self.close_key]
 
-    def getVolume(self) -> pd.Series:
+    def get_volume(self) -> pd.Series:
         return self.df[self.volume_key]
 
-    def getOpen(self) -> pd.Series:
+    def get_open(self) -> pd.Series:
         return self.df[self.open_key]
 
-    def getLow(self) -> pd.Series:
+    def get_low(self) -> pd.Series:
         return self.df[self.low_key]
-    
-    def getHigh(self) -> pd.Series:
+
+    def get_high(self) -> pd.Series:
         return self.df[self.high_key]
 
-    def getDate(self) -> pd.Series:
+    def get_date(self) -> pd.Series:
         return self.df[self.date_key]
 
-    def getTicker(self) -> str:
+    def get_ticker(self) -> str:
         return self.ticker
-    
-    def getDataFrame(self) -> pd.DataFrame:
+
+    def get_dataframe(self) -> pd.DataFrame:
         return self.df
-    
-    def hasColumn(self, name: str) -> bool:
+
+    def has_column(self, name: str) -> bool:
         return name in self.df
 
-    def setColumn(self, name: str, column: pd.Series) -> None:
+    def set_column(self, name: str, column: pd.Series) -> None:
         self.df[name] = column
-    
-    def getColumn(self, name: str) -> pd.Series:
+
+    def get_column(self, name: str) -> pd.Series:
         return self.df[name]
 
-    def getColumns(self) -> List[str]:
+    def get_columns(self) -> pd.Index:
         return self.df.columns

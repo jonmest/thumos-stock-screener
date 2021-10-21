@@ -18,8 +18,8 @@ class Consolidating(Condition):
 
     def fulfilled(self, stock: Stock) -> bool:
         try:
-            max_close = stock.getClose()[-self.window:].max()
-            min_close = stock.getClose()[-self.window:].min()
+            max_close = stock.get_close()[-self.window:].max()
+            min_close = stock.get_close()[-self.window:].min()
         except IndexError:
             return False
         return min_close > max_close * (1 - (self.max_difference_percentage / 100))

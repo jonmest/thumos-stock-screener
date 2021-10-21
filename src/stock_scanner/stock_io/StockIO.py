@@ -9,8 +9,6 @@ from abc import ABC, abstractmethod
 from datetime import datetime
 from typing import List
 
-from stock_scanner.data_fetcher.DataFetcher import DataFetcher
-
 # Misc.
 from src.stock_scanner.stock.Stock import Stock
 
@@ -40,19 +38,18 @@ class StockIO(ABC):
         self.tickers = None
 
     @abstractmethod
-    def downloadStockData(self, start_date: datetime, end_date: datetime, verbose: bool = False) -> "DataFetcher":
+    def download_stock_data(self, start_date: datetime, end_date: datetime, verbose: bool = False) -> "StockIO":
         """
         Downloading the data for stocks in the given the given universe.
 
-        Args:
-            start_date (datetime): From when should the data be downloaded (e.g. "let's download data from 2020-06-18")
-            end_date (datetime): Until when should the data be downloaded (e.g. "let's download data from 2020-06-18 to 2021-06-18")
-            verbose (bool, optional): Whether the download should be verbose, for example by displaying progress or which ticker is
-                currently being downloaded. Handy for debugging purposes.
+        Args: start_date (datetime): From when should the data be downloaded (e.g. "let's download data from
+        2020-06-18") end_date (datetime): Until when should the data be downloaded (e.g. "let's download data from
+        2020-06-18 to 2021-06-18") verbose (bool, optional): Whether the download should be verbose, for example by
+        displaying progress or which ticker is currently being downloaded. Handy for debugging purposes.
         """
         return self
 
-    def getTickers(self) -> List[str]:
+    def get_tickers(self) -> List[str]:
         """
         A convenient getter method for the ticker list.
         """
@@ -62,7 +59,7 @@ class StockIO(ABC):
             return self.tickers
 
     @abstractmethod
-    def read(self, ticker: str, path: str) -> Stock:
+    def read(self, ticker: str) -> Stock:
         """
         Read data from file and return a Stock instance. A stock ticker (e.g. "AAPL") and
         directory path should be given, and the file name resolution should be the concern
@@ -70,6 +67,5 @@ class StockIO(ABC):
 
         Args:
             ticker (str): Ticker of the stock (e.g. "AAPL").
-            path (str): Path to the the ticker's file.
         """
         pass

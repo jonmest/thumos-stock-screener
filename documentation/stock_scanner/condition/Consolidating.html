@@ -1251,11 +1251,11 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">max_close</span> <span
                         class="o">=</span> <span class="n">stock</span><span class="o">.</span><span
-                        class="n">getClose</span><span class="p">()[</span><span class="o">-</span><span class="n">window</span><span
+                        class="n">get_close</span><span class="p">()[</span><span class="o">-</span><span class="n">window</span><span
                         class="p">:]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">min_close</span> <span
                         class="o">=</span> <span class="n">stock</span><span class="o">.</span><span
-                        class="n">getClose</span><span class="p">()[</span><span class="o">-</span><span class="n">window</span><span
+                        class="n">get_close</span><span class="p">()[</span><span class="o">-</span><span class="n">window</span><span
                         class="p">:]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
         <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span>
@@ -1303,11 +1303,11 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">max_close</span> <span
                         class="o">=</span> <span class="n">stock</span><span class="o">.</span><span
-                        class="n">getClose</span><span class="p">()[</span><span class="o">-</span><span class="n">window</span><span
+                        class="n">get_close</span><span class="p">()[</span><span class="o">-</span><span class="n">window</span><span
                         class="p">:]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">min_close</span> <span
                         class="o">=</span> <span class="n">stock</span><span class="o">.</span><span
-                        class="n">getClose</span><span class="p">()[</span><span class="o">-</span><span class="n">window</span><span
+                        class="n">get_close</span><span class="p">()[</span><span class="o">-</span><span class="n">window</span><span
                         class="p">:]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
         <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span>
@@ -1351,12 +1351,12 @@
         <span class="n">window</span> <span class="o">=</span> <span class="mi">10</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">max_close</span> <span
-                            class="o">=</span> <span class="n">stock</span><span class="o">.</span><span class="n">getClose</span><span
+                            class="o">=</span> <span class="n">stock</span><span class="o">.</span><span class="n">get_close</span><span
                             class="p">()[</span><span class="o">-</span><span class="n">window</span><span
                             class="p">:]</span><span class="o">.</span><span class="n">max</span><span
                             class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">min_close</span> <span
-                            class="o">=</span> <span class="n">stock</span><span class="o">.</span><span class="n">getClose</span><span
+                            class="o">=</span> <span class="n">stock</span><span class="o">.</span><span class="n">get_close</span><span
                             class="p">()[</span><span class="o">-</span><span class="n">window</span><span
                             class="p">:]</span><span class="o">.</span><span class="n">min</span><span
                             class="p">()</span>

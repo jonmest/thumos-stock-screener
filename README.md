@@ -16,17 +16,18 @@ path = f'./{universe}'
 print("Looking for stocks above the 150 and 200 day SMA.")
 
 data_fetcher = YahooDataFetcher(universe, path)
-conditions = [ Above150And200SMA ]
+conditions = [Above150And200SMA]
 
 candidates = (
-            BasicScanner(conditions, data_fetcher)
-                .loadData()
-                .getCandidates()
+    BasicScanner(conditions, data_fetcher)
+        .load_data()
+        .get_candidates()
 )
 
-print(list(map(lambda x: x.getTicker(), candidates)))
+print(list(map(lambda x: x.get_ticker(), candidates)))
 ```
 Writing a custom Condition:
+
 ```python
 from stock_screener import Stock
 from stock_screener.condition import Condition
@@ -35,6 +36,7 @@ from stock_screener.data_fetcher.YahooDataFetcher import YahooDataFetcher
 
 universe = 'nasdaq'
 path = f'./{universe}'
+
 
 # Has the stock consolidated?
 class Consolidating(Condition):
@@ -48,8 +50,8 @@ class Consolidating(Condition):
         window = 10
         try:
             # Find the max and min closes in this window
-            self.max_close = stock.getClose()[-window:].max()
-            self.min_close = stock.getClose()[-window:].min()
+            self.max_close = stock.get_close()[-window:].max()
+            self.min_close = stock.get_close()[-window:].min()
         except IndexError:
             return False
 
@@ -60,17 +62,18 @@ class Consolidating(Condition):
         """
         return self.min_close > (self.max_close * 0.97)
 
+
 print("Looking for consolidated stocks.")
 
 data_fetcher = YahooDataFetcher(universe, path)
-conditions = [ Above150And200SMA, Consolidating ]
+conditions = [Above150And200SMA, Consolidating]
 candidates = (
-            BasicScanner(conditions, data_fetcher)
-                .loadData()
-                .getCandidates()
+    BasicScanner(conditions, data_fetcher)
+        .load_data()
+        .get_candidates()
 )
 
-print(list(map(lambda x: x.getTicker(), candidates)))
+print(list(map(lambda x: x.get_ticker(), candidates)))
 ```
 
 ## Interfaces

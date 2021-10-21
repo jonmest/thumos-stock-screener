@@ -7,7 +7,7 @@ from typing import List
 from src.stock_scanner.stock.Stock import Stock
 from ..condition.Condition import Condition
 # Data IO
-from ..io.StockIO import StockIO
+from ..stock_io.StockIO import StockIO
 from ..scanner.Scanner import Scanner
 from ..validator.BasicValidator import BasicValidator
 # Condition validation
@@ -37,7 +37,7 @@ class BasicScanner(Scanner):
             validator = BasicValidator(conditions)
         super().__init__(conditions, stock_io, validator)
 
-    def loadData(self, period: int = 365, verbose: bool = False) -> None:
+    def load_data(self, period: int = 365, verbose: bool = False) -> "BasicScanner":
         """
         Loads all stock data required for the scan.
 
@@ -51,12 +51,12 @@ class BasicScanner(Scanner):
                 stock is currently being downloaded.
         """
         start_date: datetime = datetime.datetime.now() - datetime.timedelta(days=period)
-        end_date: datetime = datetime.date.today()
+        end_date: datetime = datetime.datetime.now()
 
-        self.stock_io.downloadStockData(start_date, end_date, verbose)
+        self.stock_io.download_stock_data(start_date, end_date, verbose)
         return self
 
-    def getCandidates(self, verbose: bool = False) -> List[Stock]:
+    def get_candidates(self, verbose: bool = False) -> List[Stock]:
         """
         Return candidate stocks from the scan.
 
@@ -67,7 +67,7 @@ class BasicScanner(Scanner):
         """
         candidates: List[Stock] = []
 
-        for ticker in self.stock_io.getTickers():
+        for ticker in self.stock_io.get_tickers():
             try:
                 stock: Stock = self.stock_io.read(ticker)
 

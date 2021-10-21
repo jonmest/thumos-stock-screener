@@ -15,11 +15,11 @@ def save_png(path: str, stocks: List[Stock], dpi=250):
         os.makedirs(file_dir)
 
     for stock in stocks:
-        location = os.path.join(file_dir, f"{stock.getTicker()}.png")
-        df = stock.getDataFrame()
+        location = os.path.join(file_dir, f"{stock.get_ticker()}.png")
+        df = stock.get_dataframe()
         df[stock.date_key] = pd.to_datetime(df[stock.date_key])
         df = df.set_index(stock.date_key)
 
         mpf.plot(df, type='candle', volume=True,
                  savefig=dict(fname=f"{location}", dpi=dpi, pad_inches=0.25),
-                 title=f"{stock.getTicker()} {today}")
+                 title=f"{stock.get_ticker()} {today}")

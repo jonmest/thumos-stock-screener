@@ -1257,11 +1257,11 @@
                         class="fm">__init__</span><span class="p">(</span><span class="n">stock</span><span
                         class="p">)</span> <span class="c1"># Always call super</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">currentClose</span> <span class="o">=</span> <span
-                        class="n">stock</span><span class="o">.</span><span class="n">getClose</span><span
+                        class="n">stock</span><span class="o">.</span><span class="n">get_close</span><span
                         class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">SMA150</span> <span class="o">=</span> <span
                         class="nb">round</span><span class="p">(</span><span class="n">stock</span><span
-                        class="o">.</span><span class="n">getClose</span><span class="p">()</span><span
+                        class="o">.</span><span class="n">get_close</span><span class="p">()</span><span
                         class="o">.</span><span class="n">rolling</span><span class="p">(</span><span
                         class="n">window</span><span class="o">=</span><span class="mi">150</span><span
                         class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span
@@ -1269,7 +1269,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">SMA200</span> <span class="o">=</span> <span
                         class="bp">self</span><span class="o">.</span><span class="n">SMA150</span> <span
                         class="o">=</span> <span class="nb">round</span><span class="p">(</span><span
-                        class="n">stock</span><span class="o">.</span><span class="n">getClose</span><span
+                        class="n">stock</span><span class="o">.</span><span class="n">get_close</span><span
                         class="p">()</span><span class="o">.</span><span class="n">rolling</span><span
                         class="p">(</span><span class="n">window</span><span class="o">=</span><span
                         class="mi">200</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span
@@ -1335,11 +1335,11 @@
                         class="fm">__init__</span><span class="p">(</span><span class="n">stock</span><span
                         class="p">)</span> <span class="c1"># Always call super</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">currentClose</span> <span class="o">=</span> <span
-                        class="n">stock</span><span class="o">.</span><span class="n">getClose</span><span
+                        class="n">stock</span><span class="o">.</span><span class="n">get_close</span><span
                         class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">SMA150</span> <span class="o">=</span> <span
                         class="nb">round</span><span class="p">(</span><span class="n">stock</span><span
-                        class="o">.</span><span class="n">getClose</span><span class="p">()</span><span
+                        class="o">.</span><span class="n">get_close</span><span class="p">()</span><span
                         class="o">.</span><span class="n">rolling</span><span class="p">(</span><span
                         class="n">window</span><span class="o">=</span><span class="mi">150</span><span
                         class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span
@@ -1347,7 +1347,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">SMA200</span> <span class="o">=</span> <span
                         class="bp">self</span><span class="o">.</span><span class="n">SMA150</span> <span
                         class="o">=</span> <span class="nb">round</span><span class="p">(</span><span
-                        class="n">stock</span><span class="o">.</span><span class="n">getClose</span><span
+                        class="n">stock</span><span class="o">.</span><span class="n">get_close</span><span
                         class="p">()</span><span class="o">.</span><span class="n">rolling</span><span
                         class="p">(</span><span class="n">window</span><span class="o">=</span><span
                         class="mi">200</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span
@@ -1407,12 +1407,12 @@
                             class="fm">__init__</span><span class="p">(</span><span class="n">stock</span><span
                             class="p">)</span> <span class="c1"># Always call super</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">currentClose</span> <span class="o">=</span> <span
-                            class="n">stock</span><span class="o">.</span><span class="n">getClose</span><span
+                            class="n">stock</span><span class="o">.</span><span class="n">get_close</span><span
                             class="p">()[</span><span class="o">-</span><span class="mi">1</span><span
                             class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">SMA150</span> <span class="o">=</span> <span
                             class="nb">round</span><span class="p">(</span><span class="n">stock</span><span
-                            class="o">.</span><span class="n">getClose</span><span class="p">()</span><span
+                            class="o">.</span><span class="n">get_close</span><span class="p">()</span><span
                             class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span
                             class="o">=</span><span class="mi">150</span><span class="p">)</span><span
                             class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span
@@ -1420,7 +1420,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">SMA200</span> <span class="o">=</span> <span
                             class="bp">self</span><span class="o">.</span><span class="n">SMA150</span> <span class="o">=</span> <span
                             class="nb">round</span><span class="p">(</span><span class="n">stock</span><span
-                            class="o">.</span><span class="n">getClose</span><span class="p">()</span><span
+                            class="o">.</span><span class="n">get_close</span><span class="p">()</span><span
                             class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span
                             class="o">=</span><span class="mi">200</span><span class="p">)</span><span
                             class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span

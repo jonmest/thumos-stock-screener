@@ -1205,10 +1205,10 @@
                         <a class="function" href="#DataFetcher.downloadTickers">downloadTickers</a>
                     </li>
                     <li>
-                        <a class="function" href="#DataFetcher.getTickers">getTickers</a>
+                        <a class="function" href="#DataFetcher.getTickers">get_tickers</a>
                     </li>
                     <li>
-                        <a class="function" href="#DataFetcher.downloadStockData">downloadStockData</a>
+                        <a class="function" href="#DataFetcher.downloadStockData">download_stock_data</a>
                     </li>
                     <li>
                         <a class="function" href="#DataFetcher.getTickerPath">getTickerPath</a>
@@ -1302,7 +1302,7 @@
 
 
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">getTickers</span><span class="p">(</span><span
+    <span class="k">def</span> <span class="nf">get_tickers</span><span class="p">(</span><span
                         class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span
                         class="n">List</span><span class="p">[</span><span class="nb">str</span><span
                         class="p">]:</span>
@@ -1312,7 +1312,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tickers</span>
 
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">downloadStockData</span><span class="p">(</span><span
+    <span class="k">def</span> <span class="nf">download_stock_data</span><span class="p">(</span><span
                         class="bp">self</span><span class="p">,</span> <span class="n">start_date</span><span class="p">:</span> <span
                         class="n">datetime</span><span class="p">,</span> <span class="n">end_date</span><span
                         class="p">:</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">verbose</span><span
@@ -1414,7 +1414,7 @@
 
 
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">getTickers</span><span class="p">(</span><span
+    <span class="k">def</span> <span class="nf">get_tickers</span><span class="p">(</span><span
                         class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span
                         class="n">List</span><span class="p">[</span><span class="nb">str</span><span
                         class="p">]:</span>
@@ -1424,7 +1424,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tickers</span>
 
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">downloadStockData</span><span class="p">(</span><span
+    <span class="k">def</span> <span class="nf">download_stock_data</span><span class="p">(</span><span
                         class="bp">self</span><span class="p">,</span> <span class="n">start_date</span><span class="p">:</span> <span
                         class="n">datetime</span><span class="p">,</span> <span class="n">end_date</span><span
                         class="p">:</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">verbose</span><span
@@ -1561,13 +1561,13 @@
                 <div class="decorator">@abstractmethod</div>
 
                 <span class="def">def</span>
-                <span class="name">getTickers</span><span class="signature">(self) -&gt; List[str]</span>:
+                <span class="name">get_tickers</span><span class="signature">(self) -&gt; List[str]</span>:
             </div>
 
             <details>
                 <summary>View Source</summary>
                 <div class="codehilite"><pre><span></span>    <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">getTickers</span><span class="p">(</span><span
+    <span class="k">def</span> <span class="nf">get_tickers</span><span class="p">(</span><span
                             class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span
                             class="p">[</span><span class="nb">str</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1590,7 +1590,7 @@
                 <div class="decorator">@abstractmethod</div>
 
                 <span class="def">def</span>
-                <span class="name">downloadStockData</span><span class="signature">(
+                <span class="name">download_stock_data</span><span class="signature">(
     self,
     start_date: datetime.datetime,
     end_date: datetime.datetime,
@@ -1601,7 +1601,7 @@
             <details>
                 <summary>View Source</summary>
                 <div class="codehilite"><pre><span></span>    <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">downloadStockData</span><span class="p">(</span><span
+    <span class="k">def</span> <span class="nf">download_stock_data</span><span class="p">(</span><span
                             class="bp">self</span><span class="p">,</span> <span class="n">start_date</span><span
                             class="p">:</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">end_date</span><span
                             class="p">:</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">verbose</span><span
