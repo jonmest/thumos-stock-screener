@@ -22,7 +22,7 @@ class YahooIO(StockIO):
     IO for Yahoo
     """
 
-    def __init__(self, universe: str, path: str, max_tickers=None, delimiter: str = None,
+    def __init__(self, universe: str, path: str, max_tickers: int = None, delimiter: str = None,
                  close_key: str = "adjclose", volume_key: str = "volume",
                  open_key: str = "open", high_key: str = "high",
                  low_key: str = "low", date_key: str = "date") -> None:

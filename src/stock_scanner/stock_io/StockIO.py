@@ -19,7 +19,7 @@ class StockIO(ABC):
     """
 
     @abstractmethod
-    def __init__(self, universe: str, path: str) -> None:
+    def __init__(self, universe: str, path: str, max_tickers: int = None) -> None:
         """
         Args:
             universe (str): The name of the universe (one implementation could for example allow "nasdaq" or "sp500")
@@ -36,6 +36,7 @@ class StockIO(ABC):
 
         self.path = path
         self.tickers = None
+        self.max_tickers = max_tickers
 
     @abstractmethod
     def download_stock_data(self, start_date: datetime, end_date: datetime, verbose: bool = False) -> "StockIO":
@@ -53,10 +54,9 @@ class StockIO(ABC):
         """
         A convenient getter method for the ticker list.
         """
-        if os.environ.get('MAX_TICKERS'):
-            return self.tickers[:int(os.environ.get('MAX_TICKERS'))]
-        else:
-            return self.tickers
+        if self.max_tickers:
+            return self.tickers[:self.max_tickers]
+        return self.tickers
 
     @abstractmethod
     def read(self, ticker: str) -> Stock:
