@@ -1,5 +1,6 @@
-from ..TickerFetcher import TickerFetcher
 import unittest
+
+from src.stock_scanner.tickers· import TickerFetcher
 
 
 class TickerFetcherTest(unittest.TestCase):

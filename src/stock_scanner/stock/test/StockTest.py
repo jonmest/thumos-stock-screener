@@ -2,7 +2,7 @@ import unittest
 
 import pandas as pd
 
-from src.stock_scanner import Stock
+from src.stock_scanner.stock import Stock
 
 
 class StockTest(unittest.TestCase):
