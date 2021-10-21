@@ -1,8 +1,8 @@
 from src.stock_scanner.stock.Stock import Stock
-from ..condition.Condition import Condition
+from ..condition.ConditionInterface import ConditionInterface
 
 
-class Consolidating(Condition):
+class Consolidating(ConditionInterface):
     def __init__(self, window: int = 10, max_difference_percentage: int = 10) -> None:
         """
         In the constructor, implementations of this interface should be concerned with

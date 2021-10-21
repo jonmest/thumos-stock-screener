@@ -5,16 +5,16 @@ import traceback
 from typing import List
 
 from src.stock_scanner.stock.Stock import Stock
-from ..condition.Condition import Condition
+from ..condition.ConditionInterface import ConditionInterface
 # Data IO
-from ..stock_io.StockIO import StockIO
-from ..scanner.Scanner import Scanner
+from ..stock_io.StockIoInterface import StockIoInterface
+from ..scanner.ScannerInterface import ScannerInterface
 from ..validator.BasicValidator import BasicValidator
-# Condition validation
-from ..validator.Validator import Validator
+# ConditionInterface validation
+from ..validator.ValidatorInterface import ValidatorInterface
 
 
-class BasicScanner(Scanner):
+class BasicScanner(ScannerInterface):
     """
     Basic scanner class which should be sufficient for many use cases.
     Supply a list of conditions and it spits out the stocks conforming
@@ -22,20 +22,22 @@ class BasicScanner(Scanner):
     You may want to write your own version for more advanced scans.
     """
 
-    def __init__(self, conditions: List[Condition], stock_io: StockIO,
-                 validator: Validator = None) -> None:
+    def __init__(self, conditions: List[ConditionInterface], stock_io: StockIoInterface,
+                 validator: ValidatorInterface = None) -> None:
         """
         Args:
-            conditions (List[Condition]):
+            conditions (List[ConditionInterface]):
                 List of conditions stocks returned from scan should fulfill.
-            stock_io (StockIO):
-                An instance of StockIO.
-            validator (Validator):
+            stock_io (StockIoInterface):
+                An instance of StockIoInterface.
+            validator (ValidatorInterface):
                 A reference to a Validator, the default is BasicValidator.
         """
         if validator is None:
             validator = BasicValidator(conditions)
-        super().__init__(conditions, stock_io, validator)
+        self.conditions: List[ConditionInterface] = conditions
+        self.stock_io: StockIoInterface = stock_io
+        self.validator: ValidatorInterface = validator
 
     def load_data(self, period: int = 365, verbose: bool = False) -> "BasicScanner":
         """

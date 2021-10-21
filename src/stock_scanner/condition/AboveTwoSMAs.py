@@ -1,8 +1,8 @@
 from src.stock_scanner.stock.Stock import Stock
-from ..condition.Condition import Condition
+from ..condition.ConditionInterface import ConditionInterface
 
 
-class AboveTwoSMAs(Condition):
+class AboveTwoSMAs(ConditionInterface):
     """
     Example condition. Checks if a stock's current price
     is above two simple moving averages (SMAs).

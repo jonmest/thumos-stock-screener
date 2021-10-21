@@ -1,2 +1,2 @@
 from .BasicValidator import BasicValidator
-from .Validator import Validator
+from .ValidatorInterface import ValidatorInterface

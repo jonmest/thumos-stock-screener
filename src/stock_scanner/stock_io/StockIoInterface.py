@@ -3,7 +3,6 @@ This module contains the abstract class defining the interface ALL
 DataReaders need to implement.
 """
 
-import os
 # Parent class
 from abc import ABC, abstractmethod
 from datetime import datetime
@@ -13,33 +12,22 @@ from typing import List
 from src.stock_scanner.stock.Stock import Stock
 
 
-class StockIO(ABC):
+class StockIoInterface(ABC):
     """
     IO abstract class
     """
 
     @abstractmethod
-    def __init__(self, universe: str, path: str, max_tickers: int = None) -> None:
+    def __init__(self, universe: str, path: str, max_tickers: int) -> None:
         """
         Args:
             universe (str): The name of the universe (one implementation could for example allow "nasdaq" or "sp500")
             path (str): The path to the directory the stock data should be downloaded.
         """
-        if universe is None:
-            raise ValueError('The name of a universe needs to be supplied. For example, \"^IXIC\" for NASDAQ stocks.')
-        if universe is None:
-            raise ValueError('A path for where the stock data should be downloaded is required.')
-        self.universe = universe
-
-        if not os.path.exists(path):
-            os.makedirs(path)
-
-        self.path = path
-        self.tickers = None
-        self.max_tickers = max_tickers
+        pass
 
     @abstractmethod
-    def download_stock_data(self, start_date: datetime, end_date: datetime, verbose: bool = False) -> "StockIO":
+    def download_stock_data(self, start_date: datetime, end_date: datetime, verbose: bool = False) -> "StockIoInterface":
         """
         Downloading the data for stocks in the given the given universe.
 
@@ -48,15 +36,13 @@ class StockIO(ABC):
         2020-06-18 to 2021-06-18") verbose (bool, optional): Whether the download should be verbose, for example by
         displaying progress or which ticker is currently being downloaded. Handy for debugging purposes.
         """
-        return self
+        pass
 
     def get_tickers(self) -> List[str]:
         """
         A convenient getter method for the ticker list.
         """
-        if self.max_tickers:
-            return self.tickers[:self.max_tickers]
-        return self.tickers
+        pass
 
     @abstractmethod
     def read(self, ticker: str) -> Stock:

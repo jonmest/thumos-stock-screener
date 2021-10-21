@@ -6,23 +6,36 @@ DataReaders need to implement.
 import os
 # Parent class
 from datetime import datetime
-from typing import List
+from enum import Enum
+from typing import List, Union
 
 import pandas as pd
 from yahoo_fin import stock_info as si
 from yahooquery import Ticker
 
-from .StockIO import StockIO
+from .StockIoInterface import StockIoInterface
 # Misc.
 from src.stock_scanner.stock.Stock import Stock
 
 
-class YahooIO(StockIO):
+class YahooIOValidUniverses(Enum):
+    NASDAQ = "nasdaq"
+    DOW = "dow"
+    SP500 = "sp500"
+    FTSE100 = "ftse100"
+    FTSE250 = "ftse250"
+    NIFTY50 = "nifty50"
+    NIFTYBANK = "niftybank"
+
+
+class YahooIO(StockIoInterface):
     """
     IO for Yahoo
     """
+    valid_universes: YahooIOValidUniverses = YahooIOValidUniverses
 
-    def __init__(self, universe: str, path: str, max_tickers: int = None, delimiter: str = None,
+    def __init__(self, universe: Union[str, YahooIOValidUniverses], path: str, max_tickers: int = None,
+                 delimiter: str = None,
                  close_key: str = "adjclose", volume_key: str = "volume",
                  open_key: str = "open", high_key: str = "high",
                  low_key: str = "low", date_key: str = "date") -> None:
@@ -40,11 +53,17 @@ class YahooIO(StockIO):
             date_key (str, optional): Name of the column for the date value.
 
         """
-        super().__init__(universe, path)
+        if universe is None:
+            raise ValueError('The name of a universe needs to be supplied. For example, \"^IXIC\" for NASDAQ stocks.')
+        if path is None:
+            raise ValueError('A path for where the stock data should be downloaded is required.')
 
-        valid_universes: List[str] = ["nasdaq", "dow", "ftse100", "ftse250", "nifty50", "niftybank", "sp500"]
-        if universe not in valid_universes:
-            raise ValueError("Invalid universe given.")
+        if not isinstance(universe, YahooIOValidUniverses):
+            if universe not in [item.value for item in self.valid_universes]:
+                raise ValueError("Invalid universe given.")
+            self.universe = universe
+        else:
+            self.universe = universe.value
 
         if not os.path.exists(path):
             os.makedirs(path)

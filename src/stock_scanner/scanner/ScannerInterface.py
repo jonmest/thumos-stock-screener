@@ -4,16 +4,16 @@ from typing import List
 
 # Misc.
 from src.stock_scanner.stock.Stock import Stock
-from ..condition.Condition import Condition
-from ..stock_io.StockIO import StockIO
-# Condition validation
-from ..validator.Validator import Validator
+from ..condition.ConditionInterface import ConditionInterface
+from ..stock_io.StockIoInterface import StockIoInterface
+# ConditionInterface validation
+from ..validator.ValidatorInterface import ValidatorInterface
 
 
 # Data IO
 
 
-class Scanner(ABC):
+class ScannerInterface(ABC):
     """
     Abstract scanner class all scanners should inherit from. The abstract methods need to be implemented.
 
@@ -23,23 +23,21 @@ class Scanner(ABC):
         - get_candidates
     """
 
-    def __init__(self, conditions: List[Condition],
-                 stock_io: StockIO, validator: Validator) -> None:
+    def __init__(self, conditions: List[ConditionInterface],
+                 stock_io: StockIoInterface, validator: ValidatorInterface) -> None:
         """
         Args:
-            conditions (List[Condition]):
+            conditions (List[ConditionInterface]):
                 List of conditions stocks returned from scan should fulfill.
-            stock_io (StockIO, optional):
-                An instance of StockIO
-            validator (Validator, optional):
-                A reference to a Validator, the default is BasicValidator.
+            stock_io (StockIoInterface, optional):
+                An instance of StockIoInterface
+            validator (ValidatorInterface, optional):
+                A reference to a ValidatorInterface, the default is BasicValidator.
         """
-        self.conditions: List[Condition] = conditions
-        self.stock_io: StockIO = stock_io
-        self.validator: Validator = validator
+        pass
 
     @abstractmethod
-    def load_data(self, period: int = 365, verbose: bool = False) -> "Scanner":
+    def load_data(self, period: int, verbose: bool) -> "ScannerInterface":
         """
         Loads all stock data required for the scan.
 
@@ -50,10 +48,10 @@ class Scanner(ABC):
                 Whether the download should be verbose, i.e. show progress or what
                 stock is currently being downloaded.
         """
-        return self
+        pass
 
     @abstractmethod
-    def get_candidates(self, verbose: bool = False) -> List[Stock]:
+    def get_candidates(self, verbose: bool) -> List[Stock]:
         """
         Return candidate stocks from the scan.
 

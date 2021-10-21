@@ -5,7 +5,7 @@ from abc import ABC, abstractmethod
 from src.stock_scanner.stock.Stock import Stock
 
 
-class Condition(ABC):
+class ConditionInterface(ABC):
     """ Base class all other conditions must inherit from and implement methods for. """
 
     def __init__(self) -> None:

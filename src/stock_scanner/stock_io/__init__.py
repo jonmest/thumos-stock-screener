@@ -1,2 +1,2 @@
-from .StockIO import StockIO
+from .StockIoInterface import StockIoInterface
 from .YahooIO import YahooIO

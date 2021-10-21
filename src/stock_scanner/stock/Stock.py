@@ -1,7 +1,9 @@
 import pandas as pd
 
+from stock.StockInterface import StockInterface
 
-class Stock:
+
+class Stock(StockInterface):
     def __init__(self, ticker: str, df: pd.DataFrame, close_key: str = "adjclose",
                  volume_key: str = "volume", open_key: str = "open",
                  high_key: str = "high", low_key: str = "low", date_key: str = "date") -> None:

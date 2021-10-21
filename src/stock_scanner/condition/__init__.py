@@ -1,5 +1,5 @@
 """
 Module for conditions used in stock scanning. To write your own conditions, write 
-a class that inherits from `Condition` and implements its interface.
+a class that inherits from `ConditionInterface` and implements its interface.
 """
-from .Condition import Condition
+from .ConditionInterface import ConditionInterface
