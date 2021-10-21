@@ -1,4 +1,4 @@
-# Stock-scanner
+# stock-scanner
 Stock-scanner is a Python3 package aimed at facilitating the rapid development of custom stock scanners/screeners. The goal is for it to be a sort of framework which easily lets users swap different modules at their own discretion.
 
 ## Example code
