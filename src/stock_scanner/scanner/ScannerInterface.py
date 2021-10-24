@@ -39,7 +39,7 @@ class ScannerInterface(ABC):
         pass
 
     @abstractmethod
-    def load_data(self, start_date: datetime, end_date: datetime, verbose: bool) -> "ScannerInterface":
+    def load_data(self, verbose: bool) -> "ScannerInterface":
         """
         Loads all stock data required for the scan.
 

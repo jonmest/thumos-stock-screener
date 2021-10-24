@@ -13,10 +13,10 @@ class BacktestCandidate:
         self.stock = stock
         self.date_showed_in_scan = date_showed_in_scan
 
-    def stock(self) -> StockInterface:
+    def get_stock(self) -> StockInterface:
         return self.stock
 
-    def date(self) -> datetime:
+    def get_date(self) -> datetime:
         return self.date_showed_in_scan
 
 

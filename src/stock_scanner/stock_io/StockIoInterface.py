@@ -28,7 +28,7 @@ class StockIoInterface(ABC):
         pass
 
     @abstractmethod
-    def download_stock_data(self, start_date: datetime, end_date: datetime) -> "StockIoInterface":
+    def download_stock_data(self, start_date: datetime, end_date: datetime, verbose: bool) -> "StockIoInterface":
         """
         Downloading the data for stocks in the given the given universe.
 
