@@ -26,7 +26,8 @@ jobs:
         uses: ryan-rozario/pipreqs-action@v2.0.0
         with:
           # Gives the path of the project
-          PROJECT_PATH: ./src
+          PROJECT_PATH: ./src/stock_scanner
+          REQUIREMENT_PATH: ./src/stock_scanner/requirements.txt
           # Folder where requirements.txt has to be saved in
           # Name of the project to include in the commit
           PROJECT_NAME: Stock Scanner
