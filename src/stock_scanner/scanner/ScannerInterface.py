@@ -36,7 +36,7 @@ class ScannerInterface(ABC):
             validator (ValidatorInterface, optional):
                 A reference to a ValidatorInterface, the default is BasicValidator.
         """
-        pass
+        raise NotImplementedError()
 
     @abstractmethod
     def load_data(self, start_date: datetime, end_date: datetime, verbose: bool) -> "ScannerInterface":

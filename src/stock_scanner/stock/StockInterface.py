@@ -5,40 +5,40 @@ class StockInterface:
     def __init__(self, ticker: str, df: pd.DataFrame, close_key: str,
                  volume_key: str, open_key: str,
                  high_key: str, low_key: str, date_key: str) -> None:
-        pass
+        raise NotImplementedError()
 
     def get_close(self) -> pd.Series:
-        pass
+        raise NotImplementedError()
 
     def get_volume(self) -> pd.Series:
-        pass
+        raise NotImplementedError()
 
     def get_open(self) -> pd.Series:
-        pass
+        raise NotImplementedError()
 
     def get_low(self) -> pd.Series:
-        pass
+        raise NotImplementedError()
 
     def get_high(self) -> pd.Series:
-        pass
+        raise NotImplementedError()
 
     def get_date(self) -> pd.Series:
-        pass
+        raise NotImplementedError()
 
     def get_ticker(self) -> str:
-        pass
+        raise NotImplementedError()
 
     def get_dataframe(self) -> pd.DataFrame:
-        pass
+        raise NotImplementedError()
 
     def has_column(self, name: str) -> bool:
-        pass
+        raise NotImplementedError()
 
     def set_column(self, name: str, column: pd.Series) -> None:
-        pass
+        raise NotImplementedError()
 
     def get_column(self, name: str) -> pd.Series:
-        pass
+        raise NotImplementedError()
 
     def get_columns(self) -> pd.Index:
-        pass
+        raise NotImplementedError()

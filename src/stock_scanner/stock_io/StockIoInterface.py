@@ -43,7 +43,7 @@ class StockIoInterface(ABC):
         """
         A convenient getter method for the ticker list.
         """
-        pass
+        raise NotImplementedError()
 
     @abstractmethod
     def read(self, ticker: str, start_date: datetime, end_date: datetime) -> Stock:

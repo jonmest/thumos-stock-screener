@@ -22,7 +22,7 @@ class ValidatorInterface(ABC):
         ----------
         conditions: List[ConditionInterface]
         """
-        pass
+        raise NotImplementedError()
 
     @abstractmethod
     def is_candidate(self, stock: Stock, **kwargs) -> bool:
