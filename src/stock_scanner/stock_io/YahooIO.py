@@ -108,7 +108,7 @@ class YahooIO(StockIoInterface):
 
         return self
 
-    def read(self, ticker: str) -> Stock:
+    def read(self, ticker: str, start_date: datetime, end_date: datetime) -> Stock:
         """
         Read data from a ticker's file and return Stock.
 
@@ -120,6 +120,9 @@ class YahooIO(StockIoInterface):
         df: pd.DataFrame = pd.read_csv(
             path, index_col=0, delimiter=self.delimiter
         )
+        df['date'] = pd.to_datetime(df['date'])
+        mask = (df['date'] > start_date) & (df['date'] <= end_date)
+        df = df.loc[mask]
         stock: Stock = Stock(ticker, df, self.close_key,
                              self.volume_key, self.open_key, self.high_key,
                              self.low_key, self.date_key)

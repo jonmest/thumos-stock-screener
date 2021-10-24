@@ -45,7 +45,7 @@ class StockIoInterface(ABC):
         pass
 
     @abstractmethod
-    def read(self, ticker: str) -> Stock:
+    def read(self, ticker: str, start_date: datetime, end_date: datetime) -> Stock:
         """
         Read data from file and return a Stock instance. A stock ticker (e.g. "AAPL") and
         directory path should be given, and the file name resolution should be the concern

@@ -1,13 +1,14 @@
 # Parent class
 from abc import ABC, abstractmethod
+from datetime import datetime
 from typing import List
 
 # Misc.
 from src.stock_scanner.stock.Stock import Stock
-from ..condition.ConditionInterface import ConditionInterface
-from ..stock_io.StockIoInterface import StockIoInterface
+from src.stock_scanner.condition.ConditionInterface import ConditionInterface
+from src.stock_scanner.stock_io.StockIoInterface import StockIoInterface
 # ConditionInterface validation
-from ..validator.ValidatorInterface import ValidatorInterface
+from src.stock_scanner.validator.ValidatorInterface import ValidatorInterface
 
 
 # Data IO
@@ -24,7 +25,8 @@ class ScannerInterface(ABC):
     """
 
     def __init__(self, conditions: List[ConditionInterface],
-                 stock_io: StockIoInterface, validator: ValidatorInterface) -> None:
+                 stock_io: StockIoInterface, start_date: datetime, end_date: datetime,
+                 validator: ValidatorInterface) -> None:
         """
         Args:
             conditions (List[ConditionInterface]):
@@ -37,13 +39,13 @@ class ScannerInterface(ABC):
         pass
 
     @abstractmethod
-    def load_data(self, period: int, verbose: bool) -> "ScannerInterface":
+    def load_data(self, start_date: datetime, end_date: datetime, verbose: bool = False) -> "ScannerInterface":
         """
         Loads all stock data required for the scan.
 
         Args:
-            period (int):
-                How many bars back you want data for each stock
+            start_date (datetime)
+            end_date (datetime)
             verbose (bool, optional):
                 Whether the download should be verbose, i.e. show progress or what
                 stock is currently being downloaded.
@@ -51,7 +53,7 @@ class ScannerInterface(ABC):
         pass
 
     @abstractmethod
-    def get_candidates(self, verbose: bool) -> List[Stock]:
+    def get_candidates(self, at_day: datetime, verbose: bool) -> List[Stock]:
         """
         Return candidate stocks from the scan.
 

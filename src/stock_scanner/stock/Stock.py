@@ -16,6 +16,9 @@ class Stock(StockInterface):
         self.low_key = low_key
         self.date_key = date_key
 
+        if df.index.name != date_key:
+            self.df = df.set_index(date_key)
+
     def get_close(self) -> pd.Series:
         return self.df[self.close_key]
 
