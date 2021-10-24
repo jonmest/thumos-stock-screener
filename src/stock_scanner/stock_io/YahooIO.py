@@ -161,6 +161,6 @@ class YahooIO(StockIoInterface):
             # Yahoo Finance uses dashes instead of dots
             self.tickers: List[str] = [item.replace(".", "-") for item in self.tickers]
 
-        if os.environ.get('MAX_TICKERS'):
-            return self.tickers[:int(os.environ.get('MAX_TICKERS'))]
+        if self.max_tickers:
+            return self.tickers[:self.max_tickers]
         return self.tickers
