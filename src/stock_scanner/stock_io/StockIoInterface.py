@@ -23,11 +23,12 @@ class StockIoInterface(ABC):
         Args:
             universe (str): The name of the universe (one implementation could for example allow "nasdaq" or "sp500")
             path (str): The path to the directory the stock data should be downloaded.
+            max_tickers (int)
         """
         pass
 
     @abstractmethod
-    def download_stock_data(self, start_date: datetime, end_date: datetime, verbose: bool = False) -> "StockIoInterface":
+    def download_stock_data(self, start_date: datetime, end_date: datetime) -> "StockIoInterface":
         """
         Downloading the data for stocks in the given the given universe.
 
@@ -52,6 +53,8 @@ class StockIoInterface(ABC):
         of this method.
 
         Args:
+            start_date (datetime)
+            end_date (datetime)
             ticker (str): Ticker of the stock (e.g. "AAPL").
         """
         pass

@@ -39,7 +39,7 @@ class ScannerInterface(ABC):
         pass
 
     @abstractmethod
-    def load_data(self, start_date: datetime, end_date: datetime, verbose: bool = False) -> "ScannerInterface":
+    def load_data(self, start_date: datetime, end_date: datetime, verbose: bool) -> "ScannerInterface":
         """
         Loads all stock data required for the scan.
 
@@ -58,6 +58,7 @@ class ScannerInterface(ABC):
         Return candidate stocks from the scan.
 
         Args:
+            at_day (datetime)
             verbose (bool, optional):
                 Whether the process should be verbose, i.e. show progress or what
                 stock is currently being analyzed.

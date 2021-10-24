@@ -41,7 +41,7 @@ class YahooIO(StockIoInterface):
                  low_key: str = "low", date_key: str = "date") -> None:
         """
         Args:
-            universe (str): The name of the universe (one implementation could for example allow "nasdaq" or "sp500")
+            universe (Union[str, YahooIOValidUniverses]): The name of the universe (one implementation could for example allow "nasdaq" or "sp500")
             path (str): The path to where the stock data should be downloaded.
             delimiter (str, optional): The delimiter used in the CSV files. 
                 Can usually be left at default and automatically detected.      
@@ -114,7 +114,8 @@ class YahooIO(StockIoInterface):
 
         Args:
             ticker (str): Ticker of the stock.
-            path (str): Path to stock's data file.
+            start_date (datetime)
+            end_date (datetime)
         """
         path = self.__get_ticker_path__(ticker)
         df: pd.DataFrame = pd.read_csv(

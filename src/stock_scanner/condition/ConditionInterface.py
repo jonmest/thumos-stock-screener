@@ -2,7 +2,7 @@
 from abc import ABC, abstractmethod
 
 # Type hinting
-from src.stock_scanner.stock.Stock import Stock
+from stock.StockInterface import StockInterface
 
 
 class ConditionInterface(ABC):
@@ -18,7 +18,7 @@ class ConditionInterface(ABC):
         pass
 
     @abstractmethod
-    def fulfilled(self, stock: Stock) -> bool:
+    def fulfilled(self, stock: StockInterface) -> bool:
         """
         The method checks if the condition is met for the
         given stock. Always take stock as an argument.
