@@ -1,6 +1,6 @@
 import pandas as pd
 
-from stock.StockInterface import StockInterface
+from src.stock_scanner.stock.StockInterface import StockInterface
 
 
 class Stock(StockInterface):

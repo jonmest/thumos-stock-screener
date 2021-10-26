@@ -44,8 +44,6 @@ class ScannerInterface(ABC):
         Loads all stock data required for the scan.
 
         Args:
-            start_date (datetime)
-            end_date (datetime)
             verbose (bool, optional):
                 Whether the download should be verbose, i.e. show progress or what
                 stock is currently being downloaded.
