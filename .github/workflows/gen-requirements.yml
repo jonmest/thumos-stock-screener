@@ -28,10 +28,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-        working-directory: src
+        working-directory: src/stock_scanner
       - name: Run Tests
         run: python -m unittest 
-        working-directory: ./src
+        working-directory: src/stock_scanner
         
       - name: Automatic requirements.txt for Python Projects
         uses: ryan-rozario/pipreqs-action@v2.0.0
