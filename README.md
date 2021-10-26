@@ -1,3 +1,5 @@
+[![DeepSource](https://deepsource.io/gh/jonmest/stock-scanner.svg/?label=active+issues&show_trend=true&token=BzPLQmQm-bonBbfeokcEkFu3)](https://deepsource.io/gh/jonmest/stock-scanner/?ref=repository-badge)
+
 # stock-scanner
 Rapidly develop your own stock scanners using this Python3 library.
 - Built-in support for using the free Yahoo Finance API.

@@ -15,7 +15,7 @@ class ConditionInterface(ABC):
         a stock must have gone up in a given time frame to be considered fulfilling of the
         condition.
         """
-        pass
+        raise NotImplementedError()
 
     @abstractmethod
     def fulfilled(self, stock: StockInterface) -> bool:
