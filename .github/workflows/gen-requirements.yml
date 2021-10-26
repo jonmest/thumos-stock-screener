@@ -22,6 +22,7 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - uses: actions/checkout@v2
       - name: Automatic requirements.txt for Python Projects
         uses: ryan-rozario/pipreqs-action@v2.0.0
         with:
