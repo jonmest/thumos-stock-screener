@@ -1,4 +1,4 @@
-from src.stock_scanner.stock.Stock import Stock
+from src.stock_scanner.stock.StockInterface import StockInterface
 from ..condition.ConditionInterface import ConditionInterface
 
 
@@ -10,13 +10,12 @@ class Consolidating(ConditionInterface):
         defining the rule "the stock's highest and lowest price during the last window days
         shall not be higher than max_difference_percentage".
         Args:
-            stock (Stock)
+            stock (StockInterface)
         """
-        super().__init__()
         self.window = window
         self.max_difference_percentage = max_difference_percentage
 
-    def fulfilled(self, stock: Stock) -> bool:
+    def fulfilled(self, stock: StockInterface) -> bool:
         try:
             max_close = stock.get_close()[-self.window:].max()
             min_close = stock.get_close()[-self.window:].min()

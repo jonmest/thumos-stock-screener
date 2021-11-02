@@ -15,6 +15,6 @@ start_date: datetime = datetime.datetime.now() - datetime.timedelta(days=600)
 end_date: datetime = datetime.datetime.now()
 scanner = BasicScanner(conditions, stock_io, start_date, end_date)
 
-candidates = BacktestInterface(scanner, start_date, end_date).load_data().run()
+candidates = BacktestInterface(scanner, start_date, end_date).run()
 
 print(candidates)

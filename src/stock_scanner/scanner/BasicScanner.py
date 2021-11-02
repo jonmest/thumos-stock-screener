@@ -1,6 +1,6 @@
 # Parent class
 # Misc.
-from datetime import  datetime
+from datetime import datetime
 import traceback
 from typing import List
 

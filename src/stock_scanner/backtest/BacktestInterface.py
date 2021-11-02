@@ -7,17 +7,31 @@ from pandas import Timestamp
 from scanner import ScannerInterface
 from stock.StockInterface import StockInterface
 
+import traceback
+import pprint
+
 
 class BacktestCandidate:
-    def __init__(self, stock: StockInterface, date_showed_in_scan: datetime):
+    def __init__(self, stock: StockInterface, date: datetime, descriptive_statistics: dict):
         self.stock = stock
-        self.date_showed_in_scan = date_showed_in_scan
+        self.date = date
+        self.descriptive_statistics = descriptive_statistics
 
     def get_stock(self) -> StockInterface:
         return self.stock
 
     def get_date(self) -> datetime:
-        return self.date_showed_in_scan
+        return self.date
+
+    def get_descriptive_statistics(self) -> dict:
+        return self.descriptive_statistics
+
+    def __str__(self) -> str:
+        return self.stock.get_ticker() + " " + self.date.strftime("%Y-%m-%d") + " " + pprint.pformat(
+            self.descriptive_statistics)
+
+    def __repr__(self) -> str:
+        return self.__str__()
 
 
 class BacktestInterface:
@@ -31,25 +45,20 @@ class BacktestInterface:
         return self
 
     def run(self):
-        dates = pd.date_range(start=self.from_date, end=self.to_date).to_pydatetime().tolist()
+        dates = pd.date_range(start=self.from_date, end=self.to_date).tolist()
         candidates = []
-        for current_date in dates:
+        for current_datetime in dates:
+            current_candidates = self.scanner.get_candidates(current_datetime)
+            current_date = current_datetime.strftime("%Y-%m-%d")
 
-            current_candidates = self.scanner.get_candidates(current_date)
             for item in current_candidates:
-                next_month = current_date.date() + timedelta(days=30)
                 try:
-                    current_date_price = item.get_close().loc[[current_date - timedelta(days=1)]].values[0]
-                    next_month_price = item.get_close().loc[[next_month]].values[0]
-                    print(next_month_price)
-                    chnge = 100 * ((next_month_price - current_date_price) / current_date_price)
-                    candidates.append({
-                        "stock": item.ticker,
-                        "current_date_price": current_date_price,
-                        "30 day performance": next_month_price,
-                        "date": current_date.date()
-                    })
+                    current_date_price = item.get_close().loc[current_date]
+                    next_month_price = item.get_close().loc[current_date:][30]
+                    chnge = ((next_month_price - current_date_price) / current_date_price)
+                    backtest_candidate = BacktestCandidate(item, current_datetime, {"30 Day Performance": chnge})
+                    candidates.append(backtest_candidate)
                 except Exception as e:
-                    print(e)
-                    print("Failed :/")
+                    continue
+
         return candidates
