@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Generate requirements.txt
+name: Tests pass
 
 # Controls when the workflow will run
 on:
@@ -31,7 +31,7 @@ jobs:
         working-directory: src/stock_scanner
       - name: Run Tests
         run: python -m unittest 
-        working-directory: src/stock_scanner
+        working-directory: .
         
       - name: Automatic requirements.txt for Python Projects
         uses: ryan-rozario/pipreqs-action@v2.0.0
