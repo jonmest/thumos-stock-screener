@@ -58,7 +58,7 @@ class BacktestInterface:
                     chnge = ((next_month_price - current_date_price) / current_date_price)
                     backtest_candidate = BacktestCandidate(item, current_datetime, {"30 Day Performance": chnge})
                     candidates.append(backtest_candidate)
-                except Exception as e:
+                except Exception:
                     continue
 
         return candidates
