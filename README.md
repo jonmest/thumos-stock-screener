@@ -1,5 +1,4 @@
-[![Tests pass](https://github.com/jonmest/stock-scanner/actions/workflows/gen-requirements.yml/badge.svg)](https://github.com/jonmest/stock-scanner/actions/workflows/gen-requirements.yml)[![DeepSource](https://deepsource.io/gh/jonmest/stock-scanner.svg/?label=active+issues&show_trend=true&token=BzPLQmQm-bonBbfeokcEkFu3)](https://deepsource.io/gh/jonmest/stock-scanner/?ref=repository-badge)
-
+[![Tests pass](https://github.com/jonmest/stock-scanner/actions/workflows/gen-requirements.yml/badge.svg)](https://github.com/jonmest/stock-scanner/actions/workflows/gen-requirements.yml)[![DeepSource](https://deepsource.io/gh/jonmest/thumos-stock-screener.svg/?label=active+issues&show_trend=true&token=BzPLQmQm-bonBbfeokcEkFu3)](https://deepsource.io/gh/jonmest/thumos-stock-screener/?ref=repository-badge)
 # Thumos Stock Screener
 Rapidly develop and backtest your own stock scanners using this Python3 library.
 - Built-in support for using the free Yahoo Finance API.
