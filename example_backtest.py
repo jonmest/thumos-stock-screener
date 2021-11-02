@@ -1,5 +1,6 @@
 import datetime
 
+from backtest.Performance30Days import Performance30Days
 from src.stock_scanner.backtest.BacktestInterface import BacktestInterface
 from src.stock_scanner.condition.Consolidating import Consolidating
 from src.stock_scanner.scanner.BasicScanner import BasicScanner
@@ -15,6 +16,6 @@ start_date: datetime = datetime.datetime.now() - datetime.timedelta(days=600)
 end_date: datetime = datetime.datetime.now()
 scanner = BasicScanner(conditions, stock_io, start_date, end_date)
 
-candidates = BacktestInterface(scanner, start_date, end_date).run()
+candidates = BacktestInterface(scanner, start_date, end_date, [Performance30Days()]).run()
 
 print(candidates)
