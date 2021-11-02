@@ -1,16 +1,16 @@
 [![Tests pass](https://github.com/jonmest/stock-scanner/actions/workflows/gen-requirements.yml/badge.svg)](https://github.com/jonmest/stock-scanner/actions/workflows/gen-requirements.yml)[![DeepSource](https://deepsource.io/gh/jonmest/stock-scanner.svg/?label=active+issues&show_trend=true&token=BzPLQmQm-bonBbfeokcEkFu3)](https://deepsource.io/gh/jonmest/stock-scanner/?ref=repository-badge)
 
-# stock-scanner
-Rapidly develop your own stock scanners using this Python3 library.
+# Thumos Stock Screener
+Rapidly develop and backtest your own stock scanners using this Python3 library.
 - Built-in support for using the free Yahoo Finance API.
 - Easily write your own conditions for deciding whether a stock should show up in your scan.
 - Extensible and easily customizable - simply write your own implementations of the included interfaces.
-## Example code
+## Example screener code
 Using a pre-written example Condition:
 
 ```python
-from src.stock_scanner.condition.Consolidating import Consolidating
-from src.stock_scanner.scanner.BasicScanner import BasicScanner
+from condition.lib.Consolidating import Consolidating
+from scanner.lib.BasicScanner import BasicScanner
 from src.stock_scanner.stock_io import YahooIO
 
 path = f'./{YahooIO.valid_universes.NASDAQ.value}'
@@ -19,7 +19,7 @@ print("Looking for consolidated stocks.")
 stock_io = YahooIO(YahooIO.valid_universes.NASDAQ, path, max_tickers=50)
 conditions = [Consolidating(window=10, max_difference_percentage=2)]
 candidates = BasicScanner(conditions, stock_io).load_data().get_candidates()
-print(list(map(lambda x: x.get_ticker(), candidates)))
+print(list(map(lambda x: x.get_symbol(), candidates)))
 ```
 
 ## Core interfaces

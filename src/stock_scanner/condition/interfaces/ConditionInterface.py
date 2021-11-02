@@ -2,7 +2,7 @@
 from abc import ABC, abstractmethod
 
 # Type hinting
-from src.stock_scanner.stock.StockInterface import StockInterface
+from src.stock_scanner.stock.interfaces import StockInterface
 
 
 class ConditionInterface(ABC):

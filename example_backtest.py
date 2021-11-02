@@ -1,21 +1,20 @@
 import datetime
 
-from backtest.Performance30Days import Performance30Days
-from src.stock_scanner.backtest.BacktestInterface import BacktestInterface
-from src.stock_scanner.condition.Consolidating import Consolidating
-from src.stock_scanner.scanner.BasicScanner import BasicScanner
-from src.stock_scanner.stock_io import YahooIO
+from src.stock_scanner.backtest.lib import PerformanceNDays, BasicBacktest
+from src.stock_scanner.condition.lib import Consolidating
+from src.stock_scanner.scanner.lib import BasicScanner
+from src.stock_scanner.stock_io.lib import YahooIO
 
 path = f'./{YahooIO.valid_universes.NASDAQ.value}'
 
-print("Looking for consolidated stocks.")
+# Use the same scanner as in example.py
 stock_io = YahooIO(YahooIO.valid_universes.NASDAQ, path, max_tickers=20)
 conditions = [Consolidating(window=10, max_difference_percentage=2)]
-
 start_date: datetime = datetime.datetime.now() - datetime.timedelta(days=600)
 end_date: datetime = datetime.datetime.now()
+
 scanner = BasicScanner(conditions, stock_io, start_date, end_date)
 
-candidates = BacktestInterface(scanner, start_date, end_date, [Performance30Days()]).run()
+candidates = BasicBacktest(scanner, start_date, end_date, [PerformanceNDays(period=30)]).run()
 
 print(candidates)

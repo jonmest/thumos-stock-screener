@@ -3,8 +3,8 @@ from abc import ABC, abstractmethod
 # Misc. for type hints
 from typing import List
 
-from src.stock_scanner.stock.Stock import Stock
-from ..condition.ConditionInterface import ConditionInterface
+from src.stock_scanner.stock.lib import Stock
+from src.stock_scanner.condition.interfaces import ConditionInterface
 
 
 class ValidatorInterface(ABC):

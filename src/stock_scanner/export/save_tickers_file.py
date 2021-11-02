@@ -6,10 +6,10 @@ import os
 from datetime import datetime
 from typing import List
 
-from src.stock_scanner.stock.Stock import Stock
+from stock.lib.Stock import Stock
 
 
-def saveTickersToFile(path: str, file_name: str, stocks: List[Stock]) -> None:
+def save_tickers_file(path: str, file_name: str, stocks: List[Stock]) -> None:
     """
     Saves a list of stock candidate tickers to a file.
 
@@ -30,4 +30,4 @@ def saveTickersToFile(path: str, file_name: str, stocks: List[Stock]) -> None:
         now = datetime.now()
         file.write("Scan performed: " + now.strftime("%b %d, %Y %H:%M:%S") + "\n")
         for stock in stocks:
-            file.write(f"{stock.get_ticker()}\n")
+            file.write(f"{stock.get_symbol()}\n")

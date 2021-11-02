@@ -4,14 +4,11 @@ from datetime import datetime
 from typing import List
 
 # Misc.
-from src.stock_scanner.stock.Stock import Stock
-from src.stock_scanner.condition.ConditionInterface import ConditionInterface
-from src.stock_scanner.stock_io.StockIoInterface import StockIoInterface
+from src.stock_scanner.stock.lib import Stock
+from src.stock_scanner.condition.interfaces import ConditionInterface
+from src.stock_scanner.stock_io.interfaces import StockIoInterface
 # ConditionInterface validation
-from src.stock_scanner.validator.ValidatorInterface import ValidatorInterface
-
-
-# Data IO
+from src.stock_scanner.validator.interfaces import ValidatorInterface
 
 
 class ScannerInterface(ABC):

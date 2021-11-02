@@ -25,7 +25,7 @@ class StockInterface:
     def get_date(self) -> pd.Series:
         raise NotImplementedError()
 
-    def get_ticker(self) -> str:
+    def get_symbol(self) -> str:
         raise NotImplementedError()
 
     def get_dataframe(self) -> pd.DataFrame:

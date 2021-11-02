@@ -5,7 +5,7 @@ from typing import List
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-from src.stock_scanner.stock.Stock import Stock
+from stock.lib.Stock import Stock
 
 
 def save_interactive(path: str, stocks: List[Stock]):
@@ -15,8 +15,8 @@ def save_interactive(path: str, stocks: List[Stock]):
         os.makedirs(file_dir)
 
     for stock in stocks:
-        ticker = stock.get_ticker()
-        location = os.path.join(file_dir, f"{stock.get_ticker()}.html")
+        ticker = stock.get_symbol()
+        location = os.path.join(file_dir, f"{stock.get_symbol()}.html")
 
         fig = make_subplots(rows=2, cols=1,
                             row_heights=[0.8, 0.2], shared_xaxes=True,
