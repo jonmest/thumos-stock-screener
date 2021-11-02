@@ -11,7 +11,7 @@ Using a pre-written example Condition:
 ```python
 from condition.lib.Consolidating import Consolidating
 from scanner.lib.BasicScanner import BasicScanner
-from src.stock_scanner.stock_io import YahooIO
+from src.stock_scanner.stock_io.lib import YahooIO
 
 path = f'./{YahooIO.valid_universes.NASDAQ.value}'
 
