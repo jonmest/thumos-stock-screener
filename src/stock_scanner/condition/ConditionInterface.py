@@ -2,8 +2,7 @@
 from abc import ABC, abstractmethod
 
 # Type hinting
-from src.stock_scanner.stock.StockInterface import StockInterface
-
+from ..stock.StockInterface import StockInterface
 
 class ConditionInterface(ABC):
     """ Base class all other conditions must inherit from and implement methods for. """

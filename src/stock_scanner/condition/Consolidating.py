@@ -1,4 +1,4 @@
-from src.stock_scanner.stock.StockInterface import StockInterface
+from ..stock.StockInterface import StockInterface
 from ..condition.ConditionInterface import ConditionInterface
 
 

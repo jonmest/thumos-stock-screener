@@ -2,7 +2,7 @@
 # Misc. for type hints
 from typing import List
 
-from src.stock_scanner.stock.Stock import Stock
+from ..stock.Stock import Stock
 from ..condition.ConditionInterface import ConditionInterface
 from ..validator.ValidatorInterface import ValidatorInterface
 

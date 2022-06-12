@@ -5,7 +5,7 @@ from typing import List
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-from src.stock_scanner.stock.Stock import Stock
+from ..stock.Stock import Stock
 
 
 def save_interactive(path: str, stocks: List[Stock]):

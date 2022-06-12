@@ -1,14 +1,13 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 from typing import List
 
 import pandas as pd
 
-from backtest.AnalysisResult import AnalysisResult
-from src.stock_scanner.backtest.AnalyzerInterface import AnalyzerInterface
-from scanner import ScannerInterface
-from stock.StockInterface import StockInterface
+from ..backtest.AnalysisResult import AnalysisResult
+from ..backtest.AnalyzerInterface import AnalyzerInterface
+from ..scanner import ScannerInterface
+from ..stock.StockInterface import StockInterface
 
-import traceback
 import pprint
 
 

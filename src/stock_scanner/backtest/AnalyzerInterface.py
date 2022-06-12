@@ -1,8 +1,8 @@
 from abc import ABC
 from datetime import datetime
 
-from src.stock_scanner.backtest.AnalysisResult import AnalysisResult
-from src.stock_scanner.stock.StockInterface import StockInterface
+from ..backtest.AnalysisResult import AnalysisResult
+from ..stock.StockInterface import StockInterface
 
 
 class AnalyzerInterface(ABC):

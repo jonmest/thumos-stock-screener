@@ -5,7 +5,7 @@ from typing import List
 import mplfinance as mpf
 import pandas as pd
 
-from src.stock_scanner.stock.Stock import Stock
+from ..stock.Stock import Stock
 
 
 def save_png(path: str, stocks: List[Stock], dpi=250):

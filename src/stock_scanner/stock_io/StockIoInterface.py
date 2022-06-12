@@ -9,7 +9,7 @@ from datetime import datetime
 from typing import List
 
 # Misc.
-from src.stock_scanner.stock.Stock import Stock
+from ..stock.Stock import Stock
 
 
 class StockIoInterface(ABC):

@@ -15,7 +15,7 @@ from yahooquery import Ticker
 
 from .StockIoInterface import StockIoInterface
 # Misc.
-from src.stock_scanner.stock.Stock import Stock
+from ..stock.Stock import Stock
 
 
 class YahooIOValidUniverses(Enum):

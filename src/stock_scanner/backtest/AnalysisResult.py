@@ -1,6 +1,6 @@
 import pprint
 from typing import Iterable, Union, Any
-from src.stock_scanner.stock.StockInterface import StockInterface
+from ..stock.StockInterface import StockInterface
 
 
 class AnalysisResult:

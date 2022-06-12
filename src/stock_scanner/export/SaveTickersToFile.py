@@ -6,7 +6,7 @@ import os
 from datetime import datetime
 from typing import List
 
-from src.stock_scanner.stock.Stock import Stock
+from ..stock.Stock import Stock
 
 
 def saveTickersToFile(path: str, file_name: str, stocks: List[Stock]) -> None:
